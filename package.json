@@ -21,8 +21,18 @@
   },
   "homepage": "https://github.com/zzolo/stream-to-sql#readme",
   "dependencies": {
+    "JSONStream": "^1.1.1",
     "chalk": "^1.1.1",
+    "csv-parse": "^1.0.2",
+    "dotenv": "^2.0.0",
+    "event-stream": "^3.3.2",
+    "fast-csv": "^1.0.0",
     "lodash": "^4.6.1",
-    "progress": "^1.1.8"
+    "mysql": "^2.10.2",
+    "pg": "^4.5.1",
+    "pg-hstore": "^2.3.2",
+    "progress": "^1.1.8",
+    "sequelize": "^3.19.3",
+    "sqlite3": "^3.1.1"
   }
 }
