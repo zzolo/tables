@@ -1,0 +1,28 @@
+{
+  "name": "stream-to-sql",
+  "version": "0.0.1",
+  "description": "NodeJS library and command line tool to stream data like CSV or JSON into an SQL database.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zzolo/stream-to-sql.git"
+  },
+  "keywords": [
+    "CSV",
+    "SQL"
+  ],
+  "author": "Alan Palazzolo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zzolo/stream-to-sql/issues"
+  },
+  "homepage": "https://github.com/zzolo/stream-to-sql#readme",
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "lodash": "^4.6.1",
+    "progress": "^1.1.8"
+  }
+}
