@@ -9,9 +9,32 @@ Tables is a simple command-line tool and powerful library for importing data lik
 1. To include as a library: `npm install tables`
 1. To use as a command-line tool: `npm install -g tables`
 
+## Features
+
+* Automatic data type guessing.
+* Automatic indexes guessing.
+* Automatic default use of SQLite so need to setup a database server.
+* Supports MySQL, Postgres, and SQLite.
+* Verbose, structure output to make sure the process is running smoothly.
+
 ## Command line use
 
-Coming soon.
+The command line version can handle most of the simple options that the library uses.  A simple example that will read in a CSV and create an SQLite database name `nyc-water-quality-complaints.sql` with a `nyc_water_quality_complaints` table with the converted data.
+
+```
+tables -i tests/data/nyc-water-quality-complaints.csv
+```
+
+### Options
+
+Use the `--help` option to get a full, up-to-date look at what the options are, but here are most of them for reference:
+
+* `--help`: shows help message.
+* `--version`: outputs version.
+* `--input`: The input file to use.  Tables also can use a stdin source as well if this is not provided.
+* `--ouptut`: By default, Tables will create a `.sql` SQLite database with the same base as the input file provided, if there is not a `TABLES_DB_URI` environment variable provided.  This option allows you to override all that and output into a specifically named SQLite file.
+* `--silent`: No output except errors.
+
 
 ## Library use
 
