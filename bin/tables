@@ -2,9 +2,11 @@
 
 // Dependencies
 var fs = require("fs");
+var path = require("path");
+var command = require("commander");
+var _ = require("lodash");
 var Tables = require("../index.js");
 var output = require("../lib/output.js")(true);
-var command = require("commander");
 var pkg = require("../package.json");
 
 
@@ -14,12 +16,13 @@ command
   .version(pkg.version);
 
 // Options
-var lineSpace = "\n                       ";
+var lineSpace = "\n                         ";
 command.option("-i, --input [file]", "Input file to use.");
 command.option("-o, --output [file]", "Force output to a specific SQLite database of this file name.  By default will create " + lineSpace + "an .sql version of the input file if the TABLES_DB_URI environment variable is not provided.");
 command.option("-t, --type [csv|json]", "Input type; determined from file name if not provided.  Currently supports csv and json.");
 command.option("-n, --table-name [name]", "Use a specific table name.  By default the name of the input file is used.");
 command.option("-s, --silent", "Suppress output besides errors.");
+command.option("-c, --config [file]", "Provide a JS file that exports configuration for Tables.  This allows for " + lineSpace + "the options that are not supported in the command line.");
 
 // Parse
 command.parse(process.argv);
@@ -47,6 +50,17 @@ if (command.output) {
   options.db = "sqlite://" + command.output;
 }
 
+// Handle config file
+if (command.config) {
+  try {
+    options = _.defaultsDeep(options, require(path.join(process.cwd(), command.config)));
+  }
+  catch (e) {
+    output.error("Unable to read in config file with require function.");
+    process.exit(1);
+  }
+}
+
 // Create tables
 var t = new Tables(options);
 
@@ -57,12 +71,17 @@ function isValid(input) {
 
   // Check that input file exists if provided
   if (input.input && !fs.existsSync(input.input)) {
-    errors.push("Input file provided does not exists.");
+    errors.push("Input file provided does not exist.");
   }
 
   // Check for streaming input if file not provided
-  if (!input.input && process.stdin.isTTY) {
+  if (!input.config && !input.input && process.stdin.isTTY) {
     errors.push("Input file not provided and no data was piped in.");
+  }
+
+  // Check that config file exists if provided
+  if (input.config && !fs.existsSync(input.config)) {
+    errors.push("Config file provided does not exist.");
   }
 
   return errors.length ? errors : false;

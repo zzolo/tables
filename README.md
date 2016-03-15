@@ -35,6 +35,7 @@ Use the `--help` option to get a full, up-to-date look at what the options are, 
 * `--output`: By default, Tables will create a `.sql` SQLite database with the same base as the input file provided, if there is not a `TABLES_DB_URI` environment variable provided.  This option allows you to override all that and output into a specifically named SQLite file.
 * `--table-name`: Specify name of table importing into.  By default, Tables uses the file name.
 * `--silent`: No output except errors.
+* `--config`: Allows to use a JS file that exports configuration for Tables.  Any other options will override the values in the file.  This allows for options that are not easily supported on a command line.
 
 
 ## Library use
