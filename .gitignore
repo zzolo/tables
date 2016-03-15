@@ -1,5 +1,5 @@
 # Project specific
-
+!bin
 
 # General git ignores
 node_modules/
