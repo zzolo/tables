@@ -29,10 +29,11 @@ tables -i tests/data/nyc-water-quality-complaints.csv
 
 Use the `--help` option to get a full, up-to-date look at what the options are, but here are most of them for reference:
 
-* `--help`: shows help message.
-* `--version`: outputs version.
+* `--help`: Shows help message.
+* `--version`: Outputs version.
 * `--input`: The input file to use.  Tables also can use a stdin source as well if this is not provided.
-* `--ouptut`: By default, Tables will create a `.sql` SQLite database with the same base as the input file provided, if there is not a `TABLES_DB_URI` environment variable provided.  This option allows you to override all that and output into a specifically named SQLite file.
+* `--output`: By default, Tables will create a `.sql` SQLite database with the same base as the input file provided, if there is not a `TABLES_DB_URI` environment variable provided.  This option allows you to override all that and output into a specifically named SQLite file.
+* `--table-name`: Specify name of table importing into.  By default, Tables uses the file name.
 * `--silent`: No output except errors.
 
 
@@ -60,3 +61,10 @@ Coming soon.
 ### Data
 
 * Water quality complaints: `wget "https://data.cityofnewyork.us/api/views/qfe3-6dkn/rows.csv?accessType=DOWNLOAD" -O tests/data/nyc-water-quality-complaints.csv`
+
+## Publishing
+
+1. Update `package.json` with the new version.
+1. `git tag X.X.X`
+1. `git push origin master --tags`
+1. `npm publish`
