@@ -1,14 +1,17 @@
 {
-  "name": "stream-to-sql",
+  "name": "tables",
   "version": "0.0.1",
-  "description": "NodeJS library and command line tool to stream data like CSV or JSON into an SQL database.",
+  "description": "Tables is a simple command-line tool and powerful library for importing data like a CSV or JSON file into relational tables.",
   "main": "index.js",
+  "bin": {
+    "tables": "bin/tables"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zzolo/stream-to-sql.git"
+    "url": "git+https://github.com/datanews/tables.git"
   },
   "keywords": [
     "CSV",
@@ -17,9 +20,9 @@
   "author": "Alan Palazzolo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zzolo/stream-to-sql/issues"
+    "url": "https://github.com/datanews/tables/issues"
   },
-  "homepage": "https://github.com/zzolo/stream-to-sql#readme",
+  "homepage": "https://github.com/datanews/tables#readme",
   "dependencies": {
     "JSONStream": "^1.1.1",
     "chalk": "^1.1.1",
