@@ -37,6 +37,13 @@ Use the `--help` option to get a full, up-to-date look at what the options are, 
 * `--silent`: No output except errors.
 * `--config`: Allows to use a JS file that exports configuration for Tables.  Any other options will override the values in the file.  This allows for options that are not easily supported on a command line.
 
+### Piping
+
+Piping in data is supported.  It should be noted that a couple things happen with piping.  A bit more memory is used if guessing models.  A progress bar with time estimate cannot be used since we can't know how much data is in total.  Without an input file and certain options not defined, the default SQLite file will be `tables-import.sql` and table name of `import_tables`.
+
+```
+in2csv example.xls | tables
+```
 
 ## Library use
 
