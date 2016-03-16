@@ -34,6 +34,7 @@ Use the `--help` option to get a full, up-to-date look at what the options are, 
 * `--input`: The input file to use.  Tables also can use a stdin source as well if this is not provided.
 * `--output`: By default, Tables will create a `.sql` SQLite database with the same base as the input file provided, if there is not a `TABLES_DB_URI` environment variable provided.  This option allows you to override all that and output into a specifically named SQLite file.
 * `--table-name`: Specify name of table importing into.  By default, Tables uses the file name.
+& `--key`: Creates a unique key from columns if the models options in config is not provided.  This is a *suggested option* as it allows for data to be updated as opposed to being added to.  Use a comma-delimited list of columns, like "column 1,other,thing".
 * `--silent`: No output except errors.
 * `--config`: Allows to use a JS file that exports configuration for Tables.  Any other options will override the values in the file.  This allows for options that are not easily supported on a command line.
 
