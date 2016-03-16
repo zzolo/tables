@@ -21,6 +21,7 @@ command.option("-i, --input [file]", "Input file to use.");
 command.option("-o, --output [file]", "Force output to a specific SQLite database of this file name.  By default will create " + lineSpace + "an .sql version of the input file if the TABLES_DB_URI environment variable is not provided.");
 command.option("-t, --type [csv|json]", "Input type; determined from file name if not provided.  Currently supports csv and json.");
 command.option("-n, --table-name [name]", "Use a specific table name.  By default the name of the input file is used.");
+command.option("-k, --key [name]", "This is suggested.  A comma-delimited list of columns that define a unique key.  A unique " + lineSpace + "key means that data can be updated instead of added to.  Should be used if models is not defined.");
 command.option("-s, --silent", "Suppress output besides errors.");
 command.option("-c, --config [file]", "Provide a JS file that exports configuration for Tables.  This allows for " + lineSpace + "the options that are not supported in the command line.");
 
@@ -42,6 +43,7 @@ var options = {
   input: command.input ? command.input : undefined,
   inputType: command.type ? command.type : undefined,
   tableName: command.tableName ? command.tableName : undefined,
+  key: command.key ? command.key : undefined,
   output: !command.silent
 };
 
