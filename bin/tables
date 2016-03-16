@@ -18,7 +18,7 @@ command
 // Options
 var lineSpace = "\n                         ";
 command.option("-i, --input [file]", "Input file to use.");
-command.option("-o, --output [file]", "Force output to a specific SQLite database of this file name.  By default will create " + lineSpace + "an .sql version of the input file if the TABLES_DB_URI environment variable is not provided.");
+command.option("-d, --db [uri]", "The database URI to push data into.  By default, Tables will use the input option to " + lineSpace + "create a SQLite database with the same path with a .sql extension, or " + lineSpace + "for piping, it will create an SQLite database name tables-import.sql where the command is run.  " + lineSpace + "If you are using a password to access your database please consider " + lineSpace + "using the TABLES_DB_URI environment variable for security reasons.");
 command.option("-t, --type [csv|json]", "Input type; determined from file name if not provided.  Currently supports csv and json.");
 command.option("-n, --table-name [name]", "Use a specific table name.  By default the name of the input file is used.");
 command.option("-k, --key [name]", "This is suggested.  A comma-delimited list of columns that define a unique key.  A unique " + lineSpace + "key means that data can be updated instead of added to.  Should be used if models is not defined.");
@@ -41,16 +41,12 @@ if (errors) {
 // Make options for tables
 var options = {
   input: command.input ? command.input : undefined,
+  db: command.db ? command.db : undefined,
   inputType: command.type ? command.type : undefined,
   tableName: command.tableName ? command.tableName : undefined,
   key: command.key ? command.key : undefined,
   output: !command.silent
 };
-
-// Checkout output
-if (command.output) {
-  options.db = "sqlite://" + command.output;
-}
 
 // Handle config file
 if (command.config) {

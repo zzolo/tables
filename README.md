@@ -31,8 +31,11 @@ Use the `--help` option to get a full, up-to-date look at what the options are, 
 
 * `--help`: Shows help message.
 * `--version`: Outputs version.
-* `--input`: The input file to use.  Tables also can use a stdin source as well if this is not provided.
-* `--output`: By default, Tables will create a `.sql` SQLite database with the same base as the input file provided, if there is not a `TABLES_DB_URI` environment variable provided.  This option allows you to override all that and output into a specifically named SQLite file.
+* `--input`: The input file to use.  Tables also can use a piped in source as well, if this is not provided.
+* `--db`: The database URI to push data into.  By default, Tables will use the input option to create a SQLite database with the same path with a `.sql` extension, or for piping, it will create an SQLite database name `tables-import.sql` where the command is run.  If you are using a password to access your database please consider using the  `TABLES_DB_URI` environment variable for security reasons.  Examples:
+    * `--db="sqlite://./my-new-db.sql"`
+    * `--db="mysql://username:password@localhost/my-database"`
+    * `--db="postgres://username:@localhost:1234/my-database"`
 * `--table-name`: Specify name of table importing into.  By default, Tables uses the file name.
 & `--key`: Creates a unique key from columns if the models options in config is not provided.  This is a *suggested option* as it allows for data to be updated as opposed to being added to.  Use a comma-delimited list of columns, like "column 1,other,thing".
 * `--silent`: No output except errors.
@@ -40,7 +43,7 @@ Use the `--help` option to get a full, up-to-date look at what the options are, 
 
 ### Piping
 
-Piping in data is supported.  It should be noted that a couple things happen with piping.  A bit more memory is used if guessing models.  A progress bar with time estimate cannot be used since we can't know how much data is in total.  Without an input file and certain options not defined, the default SQLite file will be `tables-import.sql` and table name of `import_tables`.
+Piping in data is supported.  It should be noted that a couple things happen with piping.  A bit more memory is used if guessing models.  A progress bar with time estimate cannot be used since we can't know how much data is in total.  Without an input file and certain options not defined, the default SQLite file will be `tables-import.sql` and table name of `tables_import`.
 
 ```
 in2csv example.xls | tables
