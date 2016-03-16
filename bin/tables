@@ -22,8 +22,9 @@ command.option("-d, --db [uri]", "The database URI to push data into.  By defaul
 command.option("-t, --type [csv|json]", "Input type; determined from file name if not provided.  Currently supports csv and json.");
 command.option("-n, --table-name [name]", "Use a specific table name.  By default the name of the input file is used.");
 command.option("-k, --key [name]", "This is suggested.  A comma-delimited list of columns that define a unique key.  A unique " + lineSpace + "key means that data can be updated instead of added to.  Should be used if models is not defined.");
-command.option("-p, --data [file]", "Path to data file for saving place of the stream.  Defaults to ~/.tables-data");
-command.option("-z, --id [name]", "ID to use for saving the place of the stream.");
+command.option("-p, --data [file]", "Path to data file for resuming streams.  Defaults to ~/.tables-data");
+command.option("-z, --id [name]", "ID to use for resuming stream.  For CSV only.");
+command.option("-r, --restart", "WARNING Restarts any resuming, deletes existing data, and existing tables in DB.");
 command.option("-s, --silent", "Suppress output besides errors.");
 command.option("-c, --config [file]", "Provide a JS file that exports configuration for Tables.  This allows for " + lineSpace + "the options that are not supported in the command line.");
 
@@ -49,6 +50,7 @@ var options = {
   key: command.key ? command.key : undefined,
   dataPath: command.data ? command.data : undefined,
   id: command.id ? command.id : undefined,
+  restart: !!command.restart,
   output: !command.silent
 };
 
