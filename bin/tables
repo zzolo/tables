@@ -16,7 +16,7 @@ command
   .version(pkg.version);
 
 // Options
-var ls = "\n                             ";
+var ls = "\n                                  ";
 command.option("-i, --input [file]", "Input file to use.");
 command.option("-d, --db [uri]", "The database URI to push data into.  By default, Tables will use " +
   ls + "the input option to create a SQLite database with " +
@@ -38,9 +38,15 @@ command.option("-n, --table-name [name]", "Use a specific table name.  By defaul
 command.option("-k, --key [name]", "This is suggested.  A comma-delimited list of columns that " +
   ls + "define a unique key.  A unique key means that data can " +
   ls + "be updated instead of added to.  Should be used if models is not defined.");
+command.option("-a, --date-format [format]", "Date format to use when guessing date columns " +
+  ls + "and parsing data.  Defaults to MM/DD/YYYY.  See moment.js for options.");
+command.option("-a, --datetime-format [format]", "Date and time format to use when " +
+  ls + "guessing datetime columns and parsing data.  Defaults to MM/DD/YYYY HH:mm:ss a. " +
+  ls + "See moment.js for options.");
 command.option("-p, --data [file]", "Path to data file for resuming streams.  Defaults to ~/.tables-data");
 command.option("-z, --id [name]", "ID to use for resuming stream; if an input file is provided, " +
   ls + "this is used.  For CSV only.");
+command.option("-b, --batch-size [num]", "Numbers of rows to import at once. Default is 1000");
 command.option("-r, --restart", "WARNING Restarts any resuming, deletes existing data, and existing tables in DB.");
 command.option("-s, --silent", "Suppress output besides errors.");
 command.option("-c, --config [file]", "Provide a JS file that exports configuration for Tables. " +
@@ -68,6 +74,9 @@ var options = {
   key: command.key ? command.key : undefined,
   dataPath: command.data ? command.data : undefined,
   id: command.id ? command.id : undefined,
+  dateFormat: command.dateFormat ? command.dateFormat : undefined,
+  datetimeFormat: command.datetimeFormat ? command.datetimeFormat : undefined,
+  batchSize: command.batchSize ? command.batchSize : undefined,
   restart: !!command.restart,
   output: !command.silent
 };
