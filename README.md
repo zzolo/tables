@@ -85,7 +85,7 @@ Or use the Twitter command line tool, t, to save your timeline to a database.
 t timeline -n 1000 --csv | tables --db="sqlite://examples/twitter.sql" --table-name=timeline --datetime-format="YYYY-MM-DD HH:mm:ss Z" --key="id"
 ```
 
-The following are examples of getting FEC campaign finance data and putting them into a MySQL database named `fec`.  In this example the `id` flag is not useful for piping data, but helps us keep track which statement is which.
+The following are examples of getting [FEC campaign finance data](http://www.fec.gov/finance/disclosure/ftpdet.shtml) and putting them into a MySQL database named `fec`.  In this example the `id` flag is not useful for piping data, but helps us keep track which statement is which.
 
 ```
 curl --silent ftp://ftp.fec.gov/FEC/2016/cm16.zip | funzip | \
