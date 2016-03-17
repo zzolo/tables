@@ -6,23 +6,28 @@ Tables is a simple command-line tool and powerful library for importing data lik
 
 ## Install
 
-1. To include as a library: `npm install tables`
-1. To use as a command-line tool: `npm install -g tables`
+* To include as a library: `npm install tables`
+* To use as a command-line tool: `npm install -g tables`
+
+*Note*: Currently this module does not support node 5.x.  This is because we have experienced issues with [node-sqlite3](https://github.com/mapbox/node-sqlite3/issues/581), the library that handles the SQLite connection.  If you seen an error like `Cannot find module '[..]/node_modules/sqlite3/lib/binding/node-v47-darwin-x64/node_sqlite3.node'`, it probably means you should switch versions of node (try [n](https://www.npmjs.com/package/n)).  If you don't need SQLite support, then node 5.x should work fine.
 
 ## Features
 
 * Automatic data type guessing.
 * Automatic indexes guessing.
-* Automatic default use of SQLite so need to setup a database server.
+* Default use of SQLite so need to setup a database server.
+* Resumable (currently only works for CSV in input mode).
+* Supports CSV-ish and JSON data sources.
+* Sane defaults.
 * Supports MySQL, Postgres, and SQLite.
-* Verbose, structure output to make sure the process is running smoothly.
+* Verbose, structured output.
 
 ## Command line use
 
 The command line version can handle most of the simple options that the library uses.  A simple example that will read in a CSV and create an SQLite database name `nyc-water-quality-complaints.sql` with a `nyc_water_quality_complaints` table with the converted data.
 
 ```
-tables -i tests/data/nyc-water-quality-complaints.csv
+tables -i examples/nyc-water-quality-complaints.csv
 ```
 
 ### Options
@@ -71,7 +76,13 @@ tables -i examples/nyc-water-quality-complaints.csv;
 Put my Github followers into an SQLite database named `github.sql` and table name `followers`:
 
 ```
-curl --silent https://api.github.com/users/zzolo/followers | tables --type=json --db="sqlite://./examples/github.sql" --table-name=followers;
+curl --silent https://api.github.com/users/zzolo/followers | ./bin/tables --type=json --db="sqlite://./examples/github.sql" --table-name=followers --key="id";
+```
+
+Or use the Twitter command line tool, t, to save your timeline to a database.
+
+```
+t timeline -n 1000 --csv | tables --db="sqlite://examples/twitter.sql" --table-name=timeline --datetime-format="YYYY-MM-DD HH:mm:ss Z" --key="id"
 ```
 
 The following are examples of getting FEC campaign finance data and putting them into a MySQL database named `fec`.  In this example the `id` flag is not useful for piping data, but helps us keep track which statement is which.

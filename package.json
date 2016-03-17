@@ -15,6 +15,7 @@
   },
   "keywords": [
     "CSV",
+    "JSON",
     "SQL"
   ],
   "author": "Alan Palazzolo",
@@ -23,6 +24,9 @@
     "url": "https://github.com/datanews/tables/issues"
   },
   "homepage": "https://github.com/datanews/tables#readme",
+  "engines": {
+    "node": ">=0.10.3 <=4.4.0"
+  },
   "dependencies": {
     "JSONStream": "^1.1.1",
     "chalk": "^1.1.1",
