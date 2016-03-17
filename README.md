@@ -36,14 +36,30 @@ Use the `--help` option to get a full, up-to-date look at what the options are, 
     * `--db="sqlite://./my-new-db.sql"`
     * `--db="mysql://username:password@localhost/my-database"`
     * `--db="postgres://username:@localhost:1234/my-database"`
+* `--silent`: No output except errors.
+* `--data`: Path to data file for resuming streams.  Defaults to ~/.tables-data.
+* `--id`: ID to use for resuming stream; if an input file is provided, the filename is used.
+* `--restart`: Restart any resuming as well as remove existing data and tables.  **WARNING: DELETES DATA**
+* `--batch-size`: Numbers of rows to import at once. Default is 1000.  Use lower or higher numbers depending the database and how it is configured.
+* `--type`: Force type of parsing.  This is determined from filename and defaults to CSV.
+* `--csv-headers`: Use the keyword, false, if there are no headers. Or use a comma separated list of headers. Defaults to reading headers from file.  Forces type to CSV.
+* `--csv-delimiter`: CSV delimiter character.  Defaults to `,`.  Forces type to CSV.
+* `--csv-quote`: CSV quote character.  Defaults to `"`.  Forces type to CSV.
+* `--json-path`: JSON path to use for parsing rows. Default is `*`.  See [JSONStream](https://github.com/dominictarr/JSONStream).  Forces type to CSV.
+* `--date-format`: Date format to use when guessing date columns and parsing data.  Defaults to `MM/DD/YYYY`.  See [moment.js](http://momentjs.com/docs/) for options.
+* `--datetime-format`: Datetime format to use when guessing date columns and parsing data.  Defaults to `MM/DD/YYYY HH:mm:ss a`.  See [moment.js](http://momentjs.com/docs/) for options.
+* `--config`: Allows to use a JS file that exports configuration for Tables.  Any other options will override the values in the file.  This allows for options that are not easily supported on a command line.
+
+The following options only apply when guessing the model (when `options.models` is not defined).  This would only be the case if the `--config` option was used and models was defined.
+
 * `--table-name`: Specify name of table importing into.  By default, Tables uses the file name.
 & `--key`: Creates a unique key from columns if the models options in config is not provided.  This is a *suggested option* as it allows for data to be updated as opposed to being added to.  Use a comma-delimited list of columns, like "column 1,other,thing".
-* `--silent`: No output except errors.
-* `--config`: Allows to use a JS file that exports configuration for Tables.  Any other options will override the values in the file.  This allows for options that are not easily supported on a command line.
 
 ### Piping
 
 Piping in data is supported.  It should be noted that a couple things happen with piping.  A bit more memory is used if guessing models.  A progress bar with time estimate cannot be used since we can't know how much data is in total.  Without an input file and certain options not defined, the default SQLite file will be `tables-import.sql` and table name of `tables_import`.
+
+### Examples
 
 ```
 in2csv example.xls | tables
