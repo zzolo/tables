@@ -39,7 +39,7 @@ Use the `--help` option to get a full, up-to-date look at what the options are, 
 * `--silent`: No output except errors.
 * `--data`: Path to data file for resuming streams.  Defaults to ~/.tables-data.
 * `--id`: ID to use for resuming stream; if an input file is provided, the filename is used.
-* `--restart`: Restart any resuming as well as remove existing data and tables.  **WARNING: DELETES DATA**
+* `--restart`: Restart any resuming as well as remove existing data and tables.  **WARNING: DELETES DATA**  Use this is you don't have a unique key defined or if your model has changed.
 * `--batch-size`: Numbers of rows to import at once. Default is 1000.  Use lower or higher numbers depending the database and how it is configured.
 * `--type`: Force type of parsing.  This is determined from filename and defaults to CSV.
 * `--csv-headers`: Use the keyword, false, if there are no headers. Or use a comma separated list of headers. Defaults to reading headers from file.  Forces type to CSV.
@@ -61,8 +61,39 @@ Piping in data is supported.  It should be noted that a couple things happen wit
 
 ### Examples
 
+Get data from the NYC Data Portal about water quality complaints and then create an SQLite database of the same name.  This will create `examples/nyc-water-quality-complaints.sql` with a `nyc_water_quality_complaints` table that has all the data.
+
 ```
-in2csv example.xls | tables
+wget "https://data.cityofnewyork.us/api/views/qfe3-6dkn/rows.csv?accessType=DOWNLOAD" -O examples/nyc-water-quality-complaints.csv;
+tables -i examples/nyc-water-quality-complaints.csv;
+```
+
+Put my Github followers into an SQLite database named `github.sql` and table name `followers`:
+
+```
+curl --silent https://api.github.com/users/zzolo/followers | tables --type=json --db="sqlite://./examples/github.sql" --table-name=followers;
+```
+
+The following are examples of getting FEC campaign finance data and putting them into a MySQL database named `fec`.  In this example the `id` flag is not useful for piping data, but helps us keep track which statement is which.
+
+```
+curl --silent ftp://ftp.fec.gov/FEC/2016/cm16.zip | funzip | \
+tables --id="fec-committee-master" --csv-delimiter="|" \
+--csv-headers="CMTE_ID,CMTE_NM,TRES_NM,CMTE_ST1,CMTE_ST2,CMTE_CITY,CMTE_ST,CMTE_ZIP,CMTE_DSGN,CMTE_TP,CMTE_PTY_AFFILIATION,CMTE_FILING_FREQ,ORG_TP,CONNECTED_ORG_NM,CAND_ID" \
+--key="CMTE_ID" --table-name="fec_committees" \
+--db="mysql://root:@127.0.0.1/fec";
+
+curl --silent ftp://ftp.fec.gov/FEC/2016/cn16.zip | funzip | \
+tables --id="fec-candidate-master" --csv-delimiter="|" \
+--csv-headers="CAND_ID,CAND_NAME,CAND_PTY_AFFILIATION,CAND_ELECTION_YR,CAND_OFFICE_ST,CAND_OFFICE,CAND_OFFICE_DISTRICT,CAND_ICI,CAND_STATUS,CAND_PCC,CAND_ST1,CAND_ST2,CAND_CITY,CAND_ST,CAND_ZIP" \
+--key="CAND_ID" --table-name="fec_candidates" \
+--db="mysql://root:@127.0.0.1/fec";
+
+curl --silent ftp://ftp.fec.gov/FEC/2016/indiv16.zip | funzip | \
+tables --id="fec-indiv-contributions" --csv-delimiter="|" \
+--csv-headers="CMTE_ID,AMNDT_IND,RPT_TP,TRANSACTION_PGI,IMAGE_NUM,TRANSACTION_TP,ENTITY_TP,NAME,CITY,STATE,ZIP_CODE,EMPLOYER,OCCUPATION,TRANSACTION_DT,TRANSACTION_AMT,OTHER_ID,TRAN_ID,FILE_NUM,MEMO_CD,MEMO_TEXT,SUB_ID" \
+--key="SUB_ID" --table-name="fec_indiv_contributions" --date-format="MMDDYYYY" \
+--batch-size=2000 --db="mysql://root:@127.0.0.1/fec";
 ```
 
 ## Library use
