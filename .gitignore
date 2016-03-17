@@ -1,6 +1,7 @@
 # Project specific
 !bin
 *.sql
+.tables.debug
 
 # General git ignores
 node_modules/
