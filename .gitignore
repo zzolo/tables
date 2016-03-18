@@ -2,6 +2,9 @@
 !bin
 *.sql
 .tables.debug
+examples/**/*.zip
+examples/**/*.csv
+
 
 # General git ignores
 node_modules/

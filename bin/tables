@@ -38,6 +38,7 @@ command.option("-n, --table-name [name]", "Use a specific table name.  By defaul
 command.option("-k, --key [name]", "This is suggested.  A comma-delimited list of columns that " +
   ls + "define a unique key.  A unique key means that data can " +
   ls + "be updated instead of added to.  Should be used if models is not defined.");
+command.option("-c, --output-config", "Output config (and guessed model).  Will not import.");
 command.option("-a, --date-format [format]", "Date format to use when guessing date columns " +
   ls + "and parsing data.  Defaults to MM/DD/YYYY.  See moment.js for options.");
 command.option("-a, --datetime-format [format]", "Date and time format to use when " +
@@ -77,6 +78,7 @@ var options = {
   dateFormat: command.dateFormat ? command.dateFormat : undefined,
   datetimeFormat: command.datetimeFormat ? command.datetimeFormat : undefined,
   batchSize: command.batchSize ? command.batchSize : undefined,
+  outputConfig: !!command.outputConfig,
   restart: !!command.restart,
   output: !command.silent
 };

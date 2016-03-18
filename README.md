@@ -107,6 +107,15 @@ tables --id="fec-indiv-contributions" --csv-delimiter="|" \
 --batch-size=2000 --db="mysql://root:@127.0.0.1/fec";
 ```
 
+USASpending.gov has a [contract database](https://www.usaspending.gov/DownloadCenter/Pages/dataarchives.aspx) that is a 2G csv that has 900k+ rows and 200+ columns.  It's also not very good data in the sense that its structure and formatting is not consistent.  *This does not fully work well as there are rows that do not parse correctly with the CSV parser.*
+
+```
+wget "http://download.usaspending.gov/data_archives/201603/csv/2016_All_Contracts_Full_20160315.csv.zip" -O examples/2016_All_Contracts_Full_20160315.csv.zip;
+unzip examples/2016_All_Contracts_Full_20160315.csv.zip -d examples/;
+tables -i "examples/datafeeds/2016_All_Contracts_Full_20160315.csv" -d "mysql://root:@localhost/tables-testing" --batch-size=500 --config=examples/usa-spending-contracts.conf.js
+```
+
+
 ## Library use
 
 Include like most libraries:
