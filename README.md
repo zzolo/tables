@@ -75,10 +75,10 @@ tables -i examples/nyc-water-quality-complaints.csv;
 Put my Github followers into an SQLite database named `github.sql` and table name `followers`:
 
 ```bash
-curl --silent https://api.github.com/users/zzolo/followers | ./bin/tables --type=json --db="sqlite://./examples/github.sql" --table-name=followers --key="id";
+curl --silent https://api.github.com/users/zzolo/followers | tables --type=json --db="sqlite://./examples/github.sql" --table-name=followers --key="id";
 ```
 
-Or use the Twitter command line tool, t, to save your timeline to a database.
+Or use the Twitter command line tool, [t](https://github.com/sferik/t), to save your timeline to a database.
 
 ```bash
 t timeline -n 1000 --csv | tables --db="sqlite://examples/twitter.sql" --table-name=timeline --datetime-format="YYYY-MM-DD HH:mm:ss Z" --key="id"
@@ -111,7 +111,9 @@ USASpending.gov has a [contract database](https://www.usaspending.gov/DownloadCe
 ```bash
 wget "http://download.usaspending.gov/data_archives/201603/csv/2016_All_Contracts_Full_20160315.csv.zip" -O examples/2016_All_Contracts_Full_20160315.csv.zip;
 unzip examples/2016_All_Contracts_Full_20160315.csv.zip -d examples/;
-tables -i "examples/datafeeds/2016_All_Contracts_Full_20160315.csv" -d "mysql://root:@localhost/tables-testing" --batch-size=500 --config=examples/usa-spending-contracts.conf.js
+tables -i "examples/datafeeds/2016_All_Contracts_Full_20160315.csv" \
+-d "mysql://root:@localhost/tables-testing" --batch-size=500 \
+--config=examples/usa-spending-contracts.conf.js
 ```
 
 ## Library use
