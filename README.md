@@ -13,7 +13,8 @@ Tables is a simple command-line tool and powerful library for importing data lik
 
 * Automatic data type guessing.
 * Automatic indexes guessing.
-* Default use of SQLite so need to setup a database server.
+* Efficient memory utilizing Node streams.
+* Default use of SQLite so no need to setup a database server.
 * Resumable (currently only works for CSV in input mode).
 * Supports CSV-ish and JSON data sources.
 * Sane defaults.
