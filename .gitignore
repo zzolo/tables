@@ -4,6 +4,7 @@
 .tables.debug
 examples/**/*.zip
 examples/**/*.csv
+examples/ny-ALL_REPORTS/*
 
 
 # General git ignores

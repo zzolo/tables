@@ -47,5 +47,8 @@
     "sequelize": "^3.19.3",
     "sqlite3": "^3.1.1",
     "unpipe": "^1.0.0"
+  },
+  "devDependencies": {
+    "byline": "^4.2.1"
   }
 }

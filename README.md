@@ -7,7 +7,7 @@ Tables is a simple command-line tool and powerful library for importing data lik
 * To include as a library: `npm install tables`
 * To use as a command-line tool: `npm install -g tables`
 
-*Note*: Currently this module does not support node 5.x.  This is because we have experienced issues with [node-sqlite3](https://github.com/mapbox/node-sqlite3/issues/581), the library that handles the SQLite connection.  If you seen an error like `Cannot find module '[..]/node_modules/sqlite3/lib/binding/node-v47-darwin-x64/node_sqlite3.node'`, it probably means you should switch versions of node (try [n](https://www.npmjs.com/package/n)).  If you don't need SQLite support, then node 5.x should work fine.
+*Note*: Currently this module does not support node 5.x.  This is because we have experienced issues with [node-sqlite3](https://github.com/mapbox/node-sqlite3/issues/581), the library that handles the SQLite connection.  If you see an error like `Cannot find module '[..]/node_modules/sqlite3/lib/binding/node-v47-darwin-x64/node_sqlite3.node'`, it probably means you should switch versions of node (try [n](https://www.npmjs.com/package/n)).  If you don't need SQLite support, then node 5.x should work fine.
 
 ## Features
 
@@ -107,6 +107,13 @@ tables --id="fec-indiv-contributions" --csv-delimiter="|" \
 --batch-size=2000 --db="mysql://root:@127.0.0.1/fec";
 ```
 
+The NY Board of Election's campaign finance data comes in a CSV sort of format, but it requires some custom parsing.  This configuration uses its own pipe function.
+
+```
+wget http://www.elections.ny.gov/NYSBOE/download/ZipDataFiles/ALL_REPORTS.zip -O examples/ny-ALL_REPORTS.zip;
+unzip examples/ny-ALL_REPORTS.zip -d examples/ny-ALL_REPORTS;
+```
+
 USASpending.gov has a [contract database](https://www.usaspending.gov/DownloadCenter/Pages/dataarchives.aspx) that is a 2G csv that has 900k+ rows and 200+ columns.  It's also not very good data in the sense that its structure and formatting is not consistent.  *This does not fully work well as there are rows that do not parse correctly with the CSV parser.*
 
 ```bash
@@ -178,6 +185,10 @@ var t = new Tables({
 * `inputOptions`: Options to pass to the stream parser.  This will depend on what `inputType` option is given and the defaults change on that as well.
     * The CSV parser is [fast-csv](https://github.com/C2FO/fast-csv)
     * The JSON parser is [JSONstream](https://github.com/dominictarr/JSONStream)
+* `parser`: Custom parser function.  Takes two arguments the auto-parsed data, and the original data from the pipe (CSV, JSON, or custom).
+* `autoparse`: Boolean.  Turn off or on the auto-parsing of the piped data.  This happens before the `parse` function.
+* `pipe`: A custom pipe function such as [byline](https://www.npmjs.com/package/byline).
+* `resumable`: Boolean to attempt to be make the import resumable.  Only really necessary if using a custom `pipe` that can support this.
 
 The following are all options that correspond to command-line options; see that section for more description.
 
