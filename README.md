@@ -109,9 +109,10 @@ tables --id="fec-indiv-contributions" --csv-delimiter="|" \
 
 The NY Board of Election's campaign finance data comes in a CSV sort of format, but it requires some custom parsing.  This configuration uses its own pipe function.
 
-```
+```bash
 wget http://www.elections.ny.gov/NYSBOE/download/ZipDataFiles/ALL_REPORTS.zip -O examples/ny-ALL_REPORTS.zip;
 unzip examples/ny-ALL_REPORTS.zip -d examples/ny-ALL_REPORTS;
+tables -i examples/ny-ALL_REPORTS/ALL_REPORTS.out -d "mysql://root:@localhost/ny_campaign_finance" --config=examples/ny-campaign-finance.conf.js;
 ```
 
 USASpending.gov has a [contract database](https://www.usaspending.gov/DownloadCenter/Pages/dataarchives.aspx) that is a 2G csv that has 900k+ rows and 200+ columns.  It's also not very good data in the sense that its structure and formatting is not consistent.  *This does not fully work well as there are rows that do not parse correctly with the CSV parser.*
