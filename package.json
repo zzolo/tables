@@ -46,6 +46,7 @@
     "progress": "^1.1.8",
     "sequelize": "^3.19.3",
     "sqlite3": "^3.1.1",
+    "tito": "^0.4.0",
     "unpipe": "^1.0.0"
   },
   "devDependencies": {
