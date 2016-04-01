@@ -14,9 +14,9 @@ Tables is a simple command-line tool and powerful library for importing data lik
 * Automatic data type guessing.
 * Automatic indexes guessing.
 * Efficient memory utilizing Node streams.
+* Supports CSV-ish, JSON, NDJSON, and HTML table data sources (utilizes [tito](https://github.com/shawnbot/tito)).
 * Default use of SQLite so no need to setup a database server.
 * Resumable (currently only works for CSV in input mode).
-* Supports CSV-ish and JSON data sources.
 * Sane defaults.
 * Supports MySQL, Postgres, and SQLite.
     * *Note*: Postgres has some limitations, specific with updating data.
@@ -46,7 +46,7 @@ Use the `--help` option to get a full, up-to-date look at what the options are, 
 * `--id`: ID to use for resuming stream; if an input file is provided, the filename is used.
 * `--restart`: Restart any resuming as well as remove existing data and tables.  **WARNING: DELETES DATA**  Use this is you don't have a unique key defined or if your model has changed.
 * `--batch-size`: Numbers of rows to import at once. Default is 1000.  Use lower or higher numbers depending the database and how it is configured.
-* `--type`: Force type of parsing.  This is determined from filename and defaults to CSV.
+* `--type`: Force type of parsing.  This is determined from filename and defaults to `csv`.  Valid values are `csv`, `tsv`, `json`, `ndjson`, `html`, or `custom`.
 * `--csv-headers`: Use the keyword, false, if there are no headers. Or use a comma separated list of headers. Defaults to reading headers from file.  Forces type to CSV.
 * `--csv-delimiter`: CSV delimiter character.  Defaults to `,`.  Forces type to CSV.
 * `--csv-quote`: CSV quote character.  Defaults to `"`.  Forces type to CSV.
@@ -113,6 +113,12 @@ The NY Board of Election's campaign finance data comes in a CSV sort of format, 
 wget http://www.elections.ny.gov/NYSBOE/download/ZipDataFiles/ALL_REPORTS.zip -O examples/ny-ALL_REPORTS.zip;
 unzip examples/ny-ALL_REPORTS.zip -d examples/ny-ALL_REPORTS;
 tables -i examples/ny-ALL_REPORTS/ALL_REPORTS.out -d "mysql://root:@localhost/ny_campaign_finance" --config=examples/ny-campaign-finance.conf.js;
+```
+
+Since Tables uses [tito](https://github.com/shawnbot/tito) to get table data, we can also easily import HTML tables straight from the page:
+
+```bash
+curl --silent "http://www.presidentsusa.net/presvplist.html" | tables -t html -d "sqlite://./examples/presidents.sql" -n "presidents";
 ```
 
 USASpending.gov has a [contract database](https://www.usaspending.gov/DownloadCenter/Pages/dataarchives.aspx) that is a 2G csv that has 900k+ rows and 200+ columns.  It's also not very good data in the sense that its structure and formatting is not consistent.  *This does not fully work well as there are rows that do not parse correctly with the CSV parser.*
@@ -183,10 +189,11 @@ var t = new Tables({
   }
 ```
 * `dbOptions`: Tables uses [Sequelize](http://sequelize.readthedocs.org/) as its ORM to more easily support multiple database backends.  This options is an object that goes into `new Sequelize(uri, options)`.  The default of this will change a bit depending on what database is used.
-* `inputOptions`: Options to pass to the stream parser.  This will depend on what `inputType` option is given and the defaults change on that as well.
+* `inputOptions`: Options to pass to the stream parser.  This will depend on what `inputType` option is given and the defaults change on that as well.  See [tito](https://github.com/shawnbot/tito) for full options.
     * The CSV parser is [fast-csv](https://github.com/C2FO/fast-csv)
-    * The JSON parser is [JSONstream](https://github.com/dominictarr/JSONStream)
-* `parser`: Custom parser function.  Takes two arguments the auto-parsed data, and the original data from the pipe (CSV, JSON, or custom).
+    * The JSON parser is [JSONstream](https://github.com/dominictarr/JSONStream) and should be in a format like `{ path: "*" }`.
+    * The HTML table parser can use a CSS selector to get the table with some like `{ selector: ".table" }`
+* `parser`: Custom parser function.  Takes two arguments: the first is the "row" of auto-parsed data, and second is the "row" of the original data from the pipe (CSV, JSON, custom, etc).
 * `autoparse`: Boolean.  Turn off or on the auto-parsing of the piped data.  This happens before the `parse` function.
 * `pipe`: A custom pipe function such as [byline](https://www.npmjs.com/package/byline).
 * `resumable`: Boolean to attempt to be make the import resumable.  Only really necessary if using a custom `pipe` that can support this.
@@ -194,7 +201,7 @@ var t = new Tables({
 The following are all options that correspond to command-line options; see that section for more description.
 
 * `input`: `--input`, path to file.
-* `inputType`: `--type`, string (`csv` or `json`).
+* `inputType`: `--type`, string, see valid values above.
 * `db`: `--db`, DB URI.  This can be provided with the `TABLES_DB_URI` environment variable.  Examples:
     * `sqlite://./path/to/db.sql`
     * `mysql://username:password@localhost:3306/database`

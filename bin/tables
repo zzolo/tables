@@ -25,8 +25,8 @@ command.option("-d, --db [uri]", "The database URI to push data into.  By defaul
   ls + "where the command is run. If you are using a password " +
   ls + "to access your database please consider using the " +
   ls + "TABLES_DB_URI environment variable for security reasons.");
-command.option("-t, --type [csv|json]", "Input type; determined from file name if not provided.  Currently " +
-  ls + "supports csv and json.");
+command.option("-t, --type [csv|tsv|json|ndjson|html|custom`]", "Input type; determined from file name if not provided.  Defaults " +
+  ls + "to csv if could not be determined.");
 command.option("-e, --csv-headers [headers]", "Use the keyword, false, if there are no headers. " +
   ls + "Or use a comma separated list of headers. Defaults" +
   ls + "to reading headers from file.");
@@ -86,7 +86,7 @@ var options = {
 // Input type specific options
 if (command.jsonPath) {
   options.inputType = "json";
-  options.inputOptions = command.jsonPath;
+  options.inputOptions = { path: command.jsonPath };
 }
 if (command.csvDelimiter || command.csvQuote) {
   options.inputType = "csv";
