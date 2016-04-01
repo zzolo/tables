@@ -51,6 +51,7 @@ Use the `--help` option to get a full, up-to-date look at what the options are, 
 * `--csv-delimiter`: CSV delimiter character.  Defaults to `,`.  Forces type to CSV.
 * `--csv-quote`: CSV quote character.  Defaults to `"`.  Forces type to CSV.
 * `--json-path`: JSON path to use for parsing rows. Default is `*`.  See [JSONStream](https://github.com/dominictarr/JSONStream).  Forces type to CSV.
+* `--html-selector`: CSS selector to target specific table when using the `html` type.
 * `--date-format`: Date format to use when guessing date columns and parsing data.  Defaults to `MM/DD/YYYY`.  See [moment.js](http://momentjs.com/docs/) for options.
 * `--datetime-format`: Datetime format to use when guessing date columns and parsing data.  Defaults to `MM/DD/YYYY HH:mm:ss a`.  See [moment.js](http://momentjs.com/docs/) for options.
 * `--config`: Allows to use a JS file that exports configuration for Tables.  Any other options will override the values in the file.  This allows for options that are not easily supported on a command line.  See Options section under Library Use.
@@ -119,6 +120,12 @@ Since Tables uses [tito](https://github.com/shawnbot/tito) to get table data, we
 
 ```bash
 curl --silent "http://www.presidentsusa.net/presvplist.html" | tables -t html -d "sqlite://./examples/presidents.sql" -n "presidents";
+```
+
+Or a list of all the Disney movies:
+
+```bash
+curl --silent "http://www.thecompletistgeek.com/wp/" | tables -t html -d "sqlite://./examples/disney.sql" -n "movies" -m 'table.easy-table' -a "YYYY/MM/DD";
 ```
 
 USASpending.gov has a [contract database](https://www.usaspending.gov/DownloadCenter/Pages/dataarchives.aspx) that is a 2G csv that has 900k+ rows and 200+ columns.  It's also not very good data in the sense that its structure and formatting is not consistent.  *This does not fully work well as there are rows that do not parse correctly with the CSV parser.*
