@@ -25,23 +25,25 @@ command.option("-d, --db [uri]", "The database URI to push data into.  By defaul
   ls + "where the command is run. If you are using a password " +
   ls + "to access your database please consider using the " +
   ls + "TABLES_DB_URI environment variable for security reasons.");
-command.option("-t, --type [csv|json]", "Input type; determined from file name if not provided.  Currently " +
-  ls + "supports csv and json.");
+command.option("-t, --type [type]", "Input type; determined from file name if not provided.  Valid " +
+  ls + "values are csv, tsv, json, ndjson, html, or custom.  Defaults " +
+  ls + "to csv if could not be determined.");
 command.option("-e, --csv-headers [headers]", "Use the keyword, false, if there are no headers. " +
   ls + "Or use a comma separated list of headers. Defaults" +
   ls + "to reading headers from file.");
-command.option("-e, --csv-delimiter [char]", "CSV delimiter character.  Defaults to ,");
+command.option("-l, --csv-delimiter [char]", "CSV delimiter character.  Defaults to ,");
 command.option("-q, --csv-quote [char]", "CSV quote character.  Defaults to \"");
 command.option("-j, --json-path [path]", "JSON path to use for parsing rows. Default is *.  See JSONStream " +
   ls + "library for more info.");
+command.option("-m, --html-selector [path]", "CSS selector to target specific HTML table for html input type.");
 command.option("-n, --table-name [name]", "Use a specific table name.  By default the name of the input file is used.");
 command.option("-k, --key [name]", "This is suggested.  A comma-delimited list of columns that " +
   ls + "define a unique key.  A unique key means that data can " +
   ls + "be updated instead of added to.  Should be used if models is not defined.");
-command.option("-c, --output-config", "Output config (and guessed model).  Will not import.");
+command.option("-o, --output-config", "Output config (and guessed model).  Will not import.");
 command.option("-a, --date-format [format]", "Date format to use when guessing date columns " +
   ls + "and parsing data.  Defaults to MM/DD/YYYY.  See moment.js for options.");
-command.option("-a, --datetime-format [format]", "Date and time format to use when " +
+command.option("-A, --datetime-format [format]", "Date and time format to use when " +
   ls + "guessing datetime columns and parsing data.  Defaults to MM/DD/YYYY HH:mm:ss a. " +
   ls + "See moment.js for options.");
 command.option("-p, --data [file]", "Path to data file for resuming streams.  Defaults to ~/.tables-data");
@@ -86,7 +88,11 @@ var options = {
 // Input type specific options
 if (command.jsonPath) {
   options.inputType = "json";
-  options.inputOptions = command.jsonPath;
+  options.inputOptions = { path: command.jsonPath };
+}
+if (command.htmlSelector) {
+  options.inputType = "html";
+  options.inputOptions = { selector: command.htmlSelector };
 }
 if (command.csvDelimiter || command.csvQuote) {
   options.inputType = "csv";
