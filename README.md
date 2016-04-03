@@ -7,8 +7,6 @@ Tables is a simple command-line tool and powerful library for importing data lik
 * To include as a library: `npm install tables`
 * To use as a command-line tool: `npm install -g tables`
 
-*Note*: Currently this module does not support node 5.x.  This is because we have experienced issues with [node-sqlite3](https://github.com/mapbox/node-sqlite3/issues/581), the library that handles the SQLite connection.  If you see an error like `Cannot find module '[..]/node_modules/sqlite3/lib/binding/node-v47-darwin-x64/node_sqlite3.node'`, it probably means you should switch versions of node (try [n](https://www.npmjs.com/package/n)).  If you don't need SQLite support, then node 5.x should work fine.
-
 ## Features
 
 * Automatic data type guessing.
@@ -222,6 +220,10 @@ The following are all options that correspond to command-line options; see that 
 * `dateFormat`: `--date-format`, string.
 * `datetimeFormat`: `--datetime-format`, string.
 * `output`: Opposite of `--silent`, boolean.
+
+## Troubleshooting
+
+* If you see an error like `Cannot find module '[..]/node_modules/sqlite3/lib/binding/node-v47-darwin-x64/node_sqlite3.node'`, you may want to switch versions of node to get the sqlite module to work (try [n](https://www.npmjs.com/package/n) to manage multiple versions).
 
 ## Tests
 
