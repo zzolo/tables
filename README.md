@@ -227,7 +227,11 @@ The following are all options that correspond to command-line options; see that 
 
 ## Tests
 
-Coming soon.
+Tests are run through mocha; after a `npm install`, do the following:
+
+```bash
+npm run test
+```
 
 ## Publishing
 

@@ -7,7 +7,7 @@
     "tables": "bin/tables"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha/bin/mocha tests/*"
   },
   "repository": {
     "type": "git",
@@ -48,6 +48,7 @@
     "unpipe": "^1.0.0"
   },
   "devDependencies": {
-    "byline": "^4.2.1"
+    "byline": "^4.2.1",
+    "mocha": "^2.4.5"
   }
 }
