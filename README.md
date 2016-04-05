@@ -2,6 +2,9 @@
 
 Tables is a simple command-line tool and powerful library for importing data like a CSV or JSON file into relational database tables.  The goal is to make data import easy, configurable, and stable for large datasets into a relational database for better analysis.
 
+[![Build Status](https://travis-ci.org/datanews/tables.svg?branch=master)](https://travis-ci.org/datanews/tables) [![Dependencies](https://david-dm.org/datanews/tables.svg)](https://david-dm.org/datanews/tables)
+[![License](https://img.shields.io/npm/l/tables.svg)]()
+
 ## Install
 
 * To include as a library: `npm install tables`
