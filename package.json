@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "byline": "^4.2.1",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "test-console": "^1.0.0"
   }
 }
