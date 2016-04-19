@@ -52,6 +52,7 @@ command.option("-z, --id [name]", "ID to use for resuming stream; if an input fi
 command.option("-b, --batch-size [num]", "Numbers of rows to import at once. Default is 1000");
 command.option("-r, --restart", "WARNING Restarts any resuming, deletes existing data, and existing tables in DB.");
 command.option("-s, --silent", "Suppress output besides errors.");
+command.option("-u, --debug", "Output stack trace if available.");
 command.option("-c, --config [file]", "Provide a JS file that exports configuration for Tables. " +
   ls + "This allows for the options that are not supported in the command line.");
 
@@ -116,9 +117,26 @@ if (command.config) {
   }
 }
 
+// Handle any errors that Tables throws
+options.errorHandler = function(error) {
+  if (command.debug && error.stack) {
+    output.error(error.stack);
+  }
+  else if (error.message) {
+    output.error(error.message);
+  }
+  else if (error.toString) {
+    output.error(error.toString());
+  }
+  else {
+    output.error("Unknown error.");
+  }
+
+  process.exit(1);
+};
+
 // Create tables
 var t = new Tables(options);
-
 
 // Validate input
 function isValid(input) {

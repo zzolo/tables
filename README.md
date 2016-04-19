@@ -223,6 +223,7 @@ The following are all options that correspond to command-line options; see that 
 * `dateFormat`: `--date-format`, string.
 * `datetimeFormat`: `--datetime-format`, string.
 * `output`: Opposite of `--silent`, boolean.
+* `errorHandler`: A custom function to run when errors are thrown.  Gets passed the error.  Mostly used for the command line tool.
 
 ## Troubleshooting
 
