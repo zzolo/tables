@@ -49,7 +49,7 @@ Use the `--help` option to get a full, up-to-date look at what the options are, 
 * `--batch-size`: Numbers of rows to import at once. Default is 1000.  Use lower or higher numbers depending the database and how it is configured.
 * `--type`: Force type of parsing.  This is determined from filename and defaults to `csv`.  Valid values are `csv`, `tsv`, `json`, `ndjson`, `html`, or `custom`.
 * `--csv-headers`: Use the keyword, false, if there are no headers. Or use a comma separated list of headers. Defaults to reading headers from file.  Forces type to CSV.
-* `--csv-delimiter`: CSV delimiter character.  Defaults to `,`.  Forces type to CSV.
+* `--csv-delimiter`: CSV delimiter character.  Defaults to `,`.  If you need to use a tab character, use `--csv-delimiter=$'\t'`.  Forces type to CSV.
 * `--csv-quote`: CSV quote character.  Defaults to `"`.  Forces type to CSV.
 * `--json-path`: JSON path to use for parsing rows. Default is `*`.  See [JSONStream](https://github.com/dominictarr/JSONStream).  Forces type to CSV.
 * `--html-selector`: CSS selector to target specific table when using the `html` type.

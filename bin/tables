@@ -31,7 +31,8 @@ command.option("-t, --type [type]", "Input type; determined from file name if no
 command.option("-e, --csv-headers [headers]", "Use the keyword, false, if there are no headers. " +
   ls + "Or use a comma separated list of headers. Defaults" +
   ls + "to reading headers from file.");
-command.option("-l, --csv-delimiter [char]", "CSV delimiter character.  Defaults to ,");
+command.option("-l, --csv-delimiter [char]", "CSV delimiter character.  For tabs, use " +
+  ls + "--csv-delimiter=$'\\t'.  Defaults to ,");
 command.option("-q, --csv-quote [char]", "CSV quote character.  Defaults to \"");
 command.option("-j, --json-path [path]", "JSON path to use for parsing rows. Default is *.  See JSONStream " +
   ls + "library for more info.");
@@ -98,7 +99,7 @@ if (command.htmlSelector) {
 if (command.csvDelimiter || command.csvQuote) {
   options.inputType = "csv";
   options.inputOptions = {
-    headers: (command.csvHeaders.toLowerCase() === "false") ? false :
+    headers: (command.csvHeaders && command.csvHeaders.toLowerCase() === "false") ? false :
       (command.csvHeaders) ? command.csvHeaders.split(",") :
       undefined,
     delimiter: command.csvDelimiter ? command.csvDelimiter : undefined,
