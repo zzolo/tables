@@ -100,6 +100,7 @@ if (command.csvDelimiter || command.csvQuote) {
   options.inputType = "csv";
   options.inputOptions = {
     headers: (command.csvHeaders && command.csvHeaders.toLowerCase() === "false") ? false :
+      (command.csvHeaders && command.csvHeaders.toLowerCase() === "true") ? undefined :
       (command.csvHeaders) ? command.csvHeaders.split(",") :
       undefined,
     delimiter: command.csvDelimiter ? command.csvDelimiter : undefined,
