@@ -213,7 +213,7 @@ The following are all options that correspond to command-line options; see that 
 * `db`: `--db`, DB URI.  This can be provided with the `TABLES_DB_URI` environment variable.  Examples:
     * `sqlite://./path/to/db.sql`
     * `mysql://username:password@localhost:3306/database`
-    * `postgrest://username:password@localhost:5546/database`
+    * `postgres://username:password@localhost:5432/database`
 * `tableName`: `--table-name`, string.  This is only used if the `models` configuration is not provided.
 * `key`: `--key`, string.  This is only used if the `models` configuration is not provided.
 * `id`: `--id`, string.
