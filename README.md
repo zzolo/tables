@@ -42,9 +42,11 @@ Use the `--help` option to get a full, up-to-date look at what the options are, 
     * `--db="sqlite://./my-new-db.sql"`
     * `--db="mysql://username:password@localhost/my-database"`
     * `--db="postgres://username:@localhost:1234/my-database"`
+* `--key`: Creates a unique key from columns if the models options in config is not provided.  This is a **suggested option** as it allows for data to be updated as opposed to being added to.  You can use a comma-delimited list of columns for a multi-column key, like "column 1,other,thing".  Do note that this option only works if not manually defining the model, specifically in a config file.
+* `--table-name`: Specify name of table importing into.  By default, Tables uses the file name.  Do note that this option only works if not manually defining the model, specifically in a config file.
 * `--silent`: No output except errors.
 * `--data`: Path to data file for resuming streams.  Defaults to ~/.tables-data.
-* `--id`: ID to use for resuming stream; if an input file is provided, the filename is used.
+* `--id`: ID to use for resuming stream; if an input file is provided, the filename is used by default.
 * `--restart`: Restart any resuming as well as remove existing data and tables.  **WARNING: DELETES DATA**  Use this is you don't have a unique key defined or if your model has changed.
 * `--batch-size`: Numbers of rows to import at once. Default is 1000.  Use lower or higher numbers depending the database and how it is configured.
 * `--type`: Force type of parsing.  This is determined from filename and defaults to `csv`.  Valid values are `csv`, `tsv`, `json`, `ndjson`, `html`, or `custom`.
@@ -56,11 +58,6 @@ Use the `--help` option to get a full, up-to-date look at what the options are, 
 * `--date-format`: Date format to use when guessing date columns and parsing data.  Defaults to `MM/DD/YYYY`.  See [moment.js](http://momentjs.com/docs/) for options.
 * `--datetime-format`: Datetime format to use when guessing date columns and parsing data.  Defaults to `MM/DD/YYYY HH:mm:ss a`.  See [moment.js](http://momentjs.com/docs/) for options.
 * `--config`: Allows to use a JS file that exports configuration for Tables.  Any other options will override the values in the file.  This allows for options that are not easily supported on a command line.  See Options section under Library Use.
-
-The following options only apply when guessing the model (when `options.models` is not defined).  This would only be the case if the `--config` option was used and models was defined.
-
-* `--table-name`: Specify name of table importing into.  By default, Tables uses the file name.
-& `--key`: Creates a unique key from columns if the models options in config is not provided.  This is a *suggested option* as it allows for data to be updated as opposed to being added to.  Use a comma-delimited list of columns, like "column 1,other,thing".
 
 ### Piping
 
