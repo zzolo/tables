@@ -1,6 +1,6 @@
 {
   "name": "tables",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "Tables is a simple command-line tool and powerful library for importing data like a CSV or JSON file into relational tables.",
   "main": "index.js",
   "bin": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/datanews/tables.git"
+    "url": "git+https://github.com/zzolo/tables.git"
   },
   "keywords": [
     "CSV",
@@ -22,9 +22,9 @@
   "author": "Alan Palazzolo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/datanews/tables/issues"
+    "url": "https://github.com/zzolo/tables/issues"
   },
-  "homepage": "https://github.com/datanews/tables#readme",
+  "homepage": "https://github.com/zzolo/tables#readme",
   "engines": {
     "node": ">=0.10.3"
   },
@@ -44,7 +44,7 @@
     "pg-hstore": "^2.3.2",
     "progress": "^1.1.8",
     "sequelize": "^3.19.3",
-    "sqlite3": "^3.1.8",
+    "sqlite3": "^4.0.6",
     "tito": "^0.4.0",
     "unpipe": "^1.0.0"
   },
