@@ -6,18 +6,26 @@ examples/**/*.zip
 examples/**/*.csv
 examples/ny-ALL_REPORTS/*
 
+# Caches
+.*cache*
 
-# General git ignores
+# Common
+.vscode
+.drake
+*yarn.lock
+.tmp
+.yo-rc.json
 node_modules/
-components/
 bower_components/
 .npm-debug
 .npm-log
+npm*
 .env
 .sass-cache
 .tmp
-tmp/
-.DS_Store
+tmp
+.temp
+temp
 *.psd
 *.[oa]
 *.py[co]
@@ -29,6 +37,7 @@ develop-eggs
 .Python
 pip-log.txt
 .coverage
+coverage
 .tox
 *.pbxuser
 *.mode1v3
@@ -36,3 +45,37 @@ pip-log.txt
 *.perspectivev3
 *.xcuserstate
 *.~*
+
+# Compiled source
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Exceptions
