@@ -1,10 +1,10 @@
 {
   "name": "tables",
   "version": "0.1.0",
-  "description": "Tables is a simple command-line tool and powerful library for importing data like a CSV or JSON file into relational tables.",
+  "description": "Tables is a simple command-line tool and powerful library for importing data like a CSV or JSON file into relational tables quickly and easily.",
   "main": "index.js",
   "bin": {
-    "tables": "bin/tables"
+    "tables": "bin/tables.js"
   },
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha tests/*",
@@ -30,36 +30,27 @@
   },
   "dependencies": {
     "chalk": "^2.4.2",
-    "cli-spinner": "^0.2.4",
     "cli-spinners": "^2.1.0",
-    "commander": "^2.9.0",
-    "csv-parse": "^1.0.2",
-    "d3-queue": "^2.0.3",
+    "commander": "^2.20.0",
     "debug": "^4.1.1",
     "dotenv": "^2.0.0",
     "event-stream": "^3.3.2",
-    "listr": "^0.14.3",
+    "inquirer": "^6.2.2",
     "lodash": "^4.17.11",
     "log-symbols": "^2.2.0",
     "log-update": "^3.2.0",
-    "merge-stream": "^1.0.1",
     "merge2": "^1.0.1",
     "moment-timezone": "^0.5.1",
-    "multi-progress": "^2.0.0",
     "mysql2": "^1.6.5",
     "pg": "^7.9.0",
     "pg-hstore": "^2.3.2",
-    "progress": "^1.1.8",
     "replace-ext": "^1.0.0",
     "sequelize": "^5.2.12",
     "sqlite3": "^4.0.6",
-    "tito": "^0.4.0",
-    "unpipe": "^1.0.0"
+    "tito": "^0.4.0"
   },
   "devDependencies": {
-    "byline": "^4.2.1",
     "eslint": "^5.16.0",
-    "mocha": "^2.4.5",
-    "test-console": "^1.0.0"
+    "mocha": "^2.4.5"
   }
 }
