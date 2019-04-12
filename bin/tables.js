@@ -87,6 +87,10 @@ command.option(
   'Numbers of rows to import at once. Default is 500'
 );
 command.option(
+  '-g, --guess-size [num]',
+  'Numbers of rows to use to guess model from. Default is 300'
+);
+command.option(
   '-o, --overwrite',
   `WARNING: Restarts any resuming, deletes existing data, and existing
                                   tables in DB.  If using pipe data, you
@@ -124,7 +128,8 @@ async function cli() {
     id: command.id ? command.id : undefined,
     dateFormat: command.dateFormat ? command.dateFormat : undefined,
     datetimeFormat: command.datetimeFormat ? command.datetimeFormat : undefined,
-    batch: command.batchSize ? command.batchSize : undefined,
+    batch: command.batchSize ? parseInt(command.batchSize, 10) : undefined,
+    guess: command.guessSize ? parseInt(command.guessSize, 10) : undefined,
     restart: !!command.restart,
     transactions:
       command.transactions === undefined ? true : !!command.transactions,
