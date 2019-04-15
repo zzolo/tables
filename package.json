@@ -9,7 +9,9 @@
   "scripts": {
     "test": "mocha tests/*",
     "example-water": "./bin/tables.js -i examples/nyc-water-quality-complaints.csv",
-    "example-water-advanced": "./bin/tables.js -i examples/nyc-water-quality-complaints.csv --db=sqlite://examples/water-advanced.sqlite --key=unique_key --index-fields=\".*date,.*name,latitude,longtitude,.*borough,status\" --overwrite"
+    "example-water-silent": "./bin/tables.js -i examples/nyc-water-quality-complaints.csv --db=sqlite://examples/water-silent.sqlite --silent",
+    "example-water-advanced": "./bin/tables.js -i examples/nyc-water-quality-complaints.csv --db=sqlite://examples/water-advanced.sqlite --key=unique_key --index-fields=\".*date,.*name,latitude,longtitude,.*borough,status\" --overwrite",
+    "example-water-transformer": "./bin/tables.js -i examples/nyc-water-quality-complaints.csv --db=sqlite://examples/water-transformer.sqlite --key=custom_key --transformer=examples/nyc-water-example-transformer.js --overwrite"
   },
   "repository": {
     "type": "git",

@@ -70,6 +70,12 @@ command.option(
                                   comma-delimited list of columns such as "key|column_1" or ".*key|.*id".`
 );
 command.option(
+  '-t, --transformer [file]',
+  `Reference to JS file that exports a function to transform data
+                                  guessing model if models not provided, as we well as before db
+                                  inserts.`
+);
+command.option(
   '-a, --date-format [format]',
   `Date format to use when guessing date columns
                                   and parsing data.  Defaults to MM/DD/YYYY.  See moment.js for options.`
@@ -147,7 +153,8 @@ async function cli() {
     transactions:
       command.transactions === undefined ? true : !!command.transactions,
     silent: !!command.silent,
-    overwrite: !!command.overwrite
+    overwrite: !!command.overwrite,
+    transformer: command.transformer ? command.transformer : undefined
   };
 
   // Input type specific options
@@ -173,6 +180,20 @@ async function cli() {
       delimiter: command.csvDelimiter ? command.csvDelimiter : undefined,
       quote: command.csvQuote ? command.csvQuote : undefined
     };
+  }
+  if (options.transformer) {
+    try {
+      options.transformer = require(path.resolve(options.transformer));
+    }
+    catch (e) {
+      handleError(
+        e,
+        t,
+        `Issue trying to find or parse transformer file: ${chalk.red(
+          e.toString()
+        )}`
+      );
+    }
   }
 
   // Handle config file
