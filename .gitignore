@@ -1,10 +1,7 @@
 # Project specific
-!bin
-*.sql
+*.sql*
 .tables.debug
 examples/**/*.zip
-examples/**/*.csv
-examples/ny-ALL_REPORTS/*
 
 # Caches
 .*cache*
@@ -79,3 +76,4 @@ ehthumbs.db
 Thumbs.db
 
 # Exceptions
+!bin
