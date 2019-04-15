@@ -63,6 +63,13 @@ command.option(
                                   be updated instead of added to.  Should be used if models is not defined.`
 );
 command.option(
+  '-I, --index-fields [regex|string]',
+  `Fields to add indexes for; note that too many indexes will make database
+                                  inserts slow and increase disk-size of the databse.  Should be either a JS regular
+                                  expression that starts with "/", for example "/^(key|column)$" or can be a
+                                  comma-delimited list of columns such as "key|column_1" or ".*key|.*id".`
+);
+command.option(
   '-a, --date-format [format]',
   `Date format to use when guessing date columns
                                   and parsing data.  Defaults to MM/DD/YYYY.  See moment.js for options.`
@@ -126,6 +133,12 @@ async function cli() {
     tableName: command.tableName ? command.tableName : undefined,
     key: command.key ? command.key : undefined,
     id: command.id ? command.id : undefined,
+    fieldsToIndex:
+      command.indexFields && command.indexFields.match(/^\//)
+        ? command.indexFields
+        : command.indexFields
+          ? new RegExp(`^(${command.indexFields.replace(/,/g, '|')})$`, 'i')
+          : undefined,
     dateFormat: command.dateFormat ? command.dateFormat : undefined,
     datetimeFormat: command.datetimeFormat ? command.datetimeFormat : undefined,
     batch: command.batchSize ? parseInt(command.batchSize, 10) : undefined,
