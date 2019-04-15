@@ -137,7 +137,9 @@ async function cli() {
     db: command.db ? command.db : undefined,
     format: command.format ? command.format : undefined,
     tableName: command.tableName ? command.tableName : undefined,
-    key: command.key ? command.key : undefined,
+    key: command.key
+      ? _.map(command.key.split(','), d => _.snakeCase(d.trim()))
+      : undefined,
     id: command.id ? command.id : undefined,
     fieldsToIndex:
       command.indexFields && command.indexFields.match(/^\//)

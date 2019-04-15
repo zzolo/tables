@@ -2,7 +2,7 @@
 
 Tables is a simple command-line tool and powerful library for importing data like a CSV or JSON file into relational database tables. The goal is to make data import easy, configurable, and stable for large datasets into a relational database for better analysis.
 
-[![Build Status](https://travis-ci.org/datanews/tables.svg?branch=master)](https://travis-ci.org/datanews/tables) [![Dependencies](https://david-dm.org/datanews/tables.svg)](https://david-dm.org/datanews/tables)
+[![Build Status](https://travis-ci.org/zzolo/tables.svg?branch=master)](https://travis-ci.org/zzolo/tables) [![Dependencies](https://david-dm.org/zzolo/tables.svg)](https://david-dm.org/zzolo/tables)
 [![License](https://img.shields.io/npm/l/tables.svg)]()
 
 ## Install
@@ -14,42 +14,44 @@ Tables is a simple command-line tool and powerful library for importing data lik
 
 - Automatic data type guessing.
 - Automatic indexes guessing.
-- Efficient memory utilizing Node streams.
+- Efficient memory and CPU usage utilizing Node streams.
 - Supports CSV-ish, JSON, NDJSON, and HTML table data sources (utilizes [tito](https://github.com/shawnbot/tito)).
 - Default use of SQLite so no need to setup a database server.
-- Resumable (currently only works for CSV in input mode).
+- (Needs re-do) Resumable (currently only works for CSV in input mode).
 - Sane defaults.
 - Supports MySQL, Postgres, and SQLite.
-  - _Note_: Postgres has some limitations, specific with updating data.
-- Verbose, structured output.
+  - Untested in MSSQL
+- Useful, pretty output
 
-## Command line use
+## Command line usage
 
-The command line version can handle most of the simple options that the library uses. A simple example that will read in a CSV and create an SQLite database at `examples/nyc-water-quality-complaints.sql` with a `nyc_water_quality_complaints` table with the converted data.
+The command line version can handle most of the simple options that the library uses. A simple example that reads in a CSV named `filename.csv` will produce an SQLite database at `filename.sqlite`.
 
 ```bash
-tables -i examples/nyc-water-quality-complaints.csv
+tables -i filename.csv
 ```
 
-### Options
+### CLI options
 
 Use the `--help` option to get a full, up-to-date look at what the options are, but here are most of them for reference:
 
 - `--help`: Shows help message.
 - `--version`: Outputs version.
-- `--input`: The input file to use. Tables also can use a piped in source as well, if this is not provided.
-- `--db`: The database URI to push data into. By default, Tables will use the input option to create a SQLite database with the same path with a `.sql` extension, or for piping, it will create an SQLite database name `tables-import.sql` where the command is run. If you are using a password to access your database please consider using the `TABLES_DB_URI` environment variable for security reasons. Examples:
+- `--input`: The input file to use. Tables also can use a piped in source as well, if this is not provided. See _Pipe_ section below.
+- `--db`: The database URI to push data into. By default, Tables will use the input option to create a SQLite database with the same path with a `.sqlite` extension, or for piping, it will create an SQLite database name `tables-import.sqlite` where the command is run. If you are using a password to access your database please consider using the `TABLES_DB_URI` environment variable for security reasons. Examples:
   - `--db="sqlite://./my-new-db.sql"`
   - `--db="mysql://username:password@localhost/my-database"`
   - `--db="postgres://username:@localhost:1234/my-database"`
+- `--format`: Force type of parsing. This is determined from filename and defaults to `csv`. Valid values are `csv`, `tsv`, `json`, `ndjson`, `html`.
 - `--key`: Creates a unique key from columns if the models options in config is not provided. This is a **suggested option** as it allows for data to be updated as opposed to being added to. You can use a comma-delimited list of columns for a multi-column key, like "column 1,other,thing". Do note that this option only works if not manually defining the model, specifically in a config file.
-- `--table-name`: Specify name of table importing into. By default, Tables uses the file name. Do note that this option only works if not manually defining the model, specifically in a config file.
+- `--index-fields`: Defines which fields will be indexed. By default this looks fields that end in "key", "id", or "name".
+  - Provide a JS regular expression that starts with `/`, for example `/^(key|column)$`.
+  - Or provide a comma-separated list of columns or regular-expression-like values, such as `key|column_1` or `.*key|.*id`.
+- `--table-name`: Specify name of table importing into. By default, Tables uses the file name if provided, or `tables_import` for piping data. Do note that this option only works if not manually defining the model, specifically in a config file.
 - `--silent`: No output except errors.
-- `--data`: Path to data file for resuming streams. Defaults to ~/.tables-data.
-- `--id`: ID to use for resuming stream; if an input file is provided, the filename is used by default.
-- `--restart`: Restart any resuming as well as remove existing data and tables. **WARNING: DELETES DATA** Use this is you don't have a unique key defined or if your model has changed.
-- `--batch-size`: Numbers of rows to import at once. Default is 1000. Use lower or higher numbers depending the database and how it is configured.
-- `--type`: Force type of parsing. This is determined from filename and defaults to `csv`. Valid values are `csv`, `tsv`, `json`, `ndjson`, `html`, or `custom`.
+- `--overwrite`: **WARNING: DELETES DATA** Removes existing data and tables. Use this is you don't have a unique key, `--key` option, defined or if your model has changed.
+- `--batch-size`: Numbers of rows to import at once. Default is `500`. Use lower or higher numbers depending on the database and how it is configured.
+- `--guess-size`: Numbers of rows to use for guessing model. Default is `500`. Use lower or higher numbers depending on the database and how it is configured.
 - `--csv-headers`: Use the keyword, false, if there are no headers. Or use a comma separated list of headers. Defaults to reading headers from file. Forces type to CSV.
 - `--csv-delimiter`: CSV delimiter character. Defaults to `,`. If you need to use a tab character, use `--csv-delimiter=$'\t'`. Forces type to CSV.
 - `--csv-quote`: CSV quote character. Defaults to `"`. Forces type to CSV.
@@ -57,83 +59,32 @@ Use the `--help` option to get a full, up-to-date look at what the options are, 
 - `--html-selector`: CSS selector to target specific table when using the `html` type.
 - `--date-format`: Date format to use when guessing date columns and parsing data. Defaults to `MM/DD/YYYY`. See [moment.js](http://momentjs.com/docs/) for options.
 - `--datetime-format`: Datetime format to use when guessing date columns and parsing data. Defaults to `MM/DD/YYYY HH:mm:ss a`. See [moment.js](http://momentjs.com/docs/) for options.
-- `--config`: Allows to use a JS file that exports configuration for Tables. Any other options will override the values in the file. This allows for options that are not easily supported on a command line. See Options section under Library Use.
+- `--transformer`: Point to a JS module that exports a function to transform the data before being loaded into the database.
+- `--config`: Allows to use a JS file that exports configuration for Tables. Any other options will override the values in the file. This allows for options that are not easily supported on a command line. See _Options_ section under _Library Use_.
 
 ### Piping
 
 Piping in data is supported. It should be noted that a couple things happen with piping. A bit more memory is used if guessing models. A progress bar with time estimate cannot be used since we can't know how much data is in total. Without an input file and certain options not defined, the default SQLite file will be `tables-import.sql` and table name of `tables_import`.
 
+```sh
+cat filename.json | tables -f json
+```
+
 ### Examples
 
 Get data from the NYC Data Portal about water quality complaints and then create an SQLite database of the same name. This will create `examples/nyc-water-quality-complaints.sql` with a `nyc_water_quality_complaints` table that has all the data.
 
-```bash
-wget "https://data.cityofnewyork.us/api/views/qfe3-6dkn/rows.csv?accessType=DOWNLOAD" -O examples/nyc-water-quality-complaints.csv;
-tables -i examples/nyc-water-quality-complaints.csv;
+```sh
+$ curl --silent "https://data.cityofnewyork.us/api/views/qfe3-6dkn/rows.csv" | tables --db sqlite://nyc-water-quality-complaints.sqlite --table-name nyc_water_complaints;
+$ sqlite3 nyc-water-quality-complaints.sqlite
+sqlite> .tables
+sqlite> SELECT * FROM nyc_water_complaints;
 ```
 
 Put my Github followers into an SQLite database named `github.sql` and table name `followers`:
 
 ```bash
-curl --silent https://api.github.com/users/zzolo/followers | DEBUG=tables* ./bin/tables.js --format=json --db="sqlite://./examples/github.sqlite" --table-name=followers --key="id";
-```
-
-Or use the Twitter command line tool, [t](https://github.com/sferik/t), to save your timeline to a database.
-
-```bash
-t timeline -n 1000 --csv | tables --db="sqlite://examples/twitter.sql" --table-name=timeline --datetime-format="YYYY-MM-DD HH:mm:ss Z" --key="id"
-```
-
-The following are examples of getting [FEC campaign finance data](http://www.fec.gov/finance/disclosure/ftpdet.shtml) and putting them into a MySQL database named `fec`. In this example the `id` flag is not useful for piping data, but helps us keep track which statement is which.
-
-```bash
-curl --silent ftp://ftp.fec.gov/FEC/2016/cm16.zip | funzip | \
-tables --id="fec-committee-master" --csv-delimiter="|" \
---csv-headers="CMTE_ID,CMTE_NM,TRES_NM,CMTE_ST1,CMTE_ST2,CMTE_CITY,CMTE_ST,CMTE_ZIP,CMTE_DSGN,CMTE_TP,CMTE_PTY_AFFILIATION,CMTE_FILING_FREQ,ORG_TP,CONNECTED_ORG_NM,CAND_ID" \
---key="CMTE_ID" --table-name="fec_committees" \
---db="mysql://root:@127.0.0.1/fec";
-
-curl --silent ftp://ftp.fec.gov/FEC/2016/cn16.zip | funzip | \
-tables --id="fec-candidate-master" --csv-delimiter="|" \
---csv-headers="CAND_ID,CAND_NAME,CAND_PTY_AFFILIATION,CAND_ELECTION_YR,CAND_OFFICE_ST,CAND_OFFICE,CAND_OFFICE_DISTRICT,CAND_ICI,CAND_STATUS,CAND_PCC,CAND_ST1,CAND_ST2,CAND_CITY,CAND_ST,CAND_ZIP" \
---key="CAND_ID" --table-name="fec_candidates" \
---db="mysql://root:@127.0.0.1/fec";
-
-curl --silent ftp://ftp.fec.gov/FEC/2016/indiv16.zip | funzip | \
-tables --id="fec-indiv-contributions" --csv-delimiter="|" \
---csv-headers="CMTE_ID,AMNDT_IND,RPT_TP,TRANSACTION_PGI,IMAGE_NUM,TRANSACTION_TP,ENTITY_TP,NAME,CITY,STATE,ZIP_CODE,EMPLOYER,OCCUPATION,TRANSACTION_DT,TRANSACTION_AMT,OTHER_ID,TRAN_ID,FILE_NUM,MEMO_CD,MEMO_TEXT,SUB_ID" \
---key="SUB_ID" --table-name="fec_indiv_contributions" --date-format="MMDDYYYY" \
---batch-size=2000 --db="mysql://root:@127.0.0.1/fec";
-```
-
-The NY Board of Election's campaign finance data comes in a CSV sort of format, but it requires some custom parsing. This configuration uses its own pipe function.
-
-```bash
-wget http://www.elections.ny.gov/NYSBOE/download/ZipDataFiles/ALL_REPORTS.zip -O examples/ny-ALL_REPORTS.zip;
-unzip examples/ny-ALL_REPORTS.zip -d examples/ny-ALL_REPORTS;
-tables -i examples/ny-ALL_REPORTS/ALL_REPORTS.out -d "mysql://root:@localhost/ny_campaign_finance" --config=examples/ny-campaign-finance.conf.js;
-```
-
-Since Tables uses [tito](https://github.com/shawnbot/tito) to get table data, we can also easily import HTML tables straight from the page:
-
-```bash
-curl --silent "https://www.englisch-hilfen.de/en/texte/presidents_usa.htm" | ./bin/tables.js -f html -d "sqlite://./examples/presidents.sqlite" -n "presidents";
-```
-
-Or a list of all the Disney movies:
-
-```bash
-curl --silent "http://www.thecompletistgeek.com/wp/" | tables -t html -d "sqlite://./examples/disney.sql" -n "movies" -m 'table.easy-table' -a "YYYY/MM/DD";
-```
-
-USASpending.gov has a [contract database](https://www.usaspending.gov/DownloadCenter/Pages/dataarchives.aspx) that is a 2G csv that has 900k+ rows and 200+ columns. It's also not very good data in the sense that its structure and formatting is not consistent. _This does not fully work well as there are rows that do not parse correctly with the CSV parser._
-
-```bash
-wget "http://download.usaspending.gov/data_archives/201603/csv/2016_All_Contracts_Full_20160315.csv.zip" -O examples/2016_All_Contracts_Full_20160315.csv.zip;
-unzip examples/2016_All_Contracts_Full_20160315.csv.zip -d examples/;
-tables -i "examples/datafeeds/2016_All_Contracts_Full_20160315.csv" \
--d "mysql://root:@localhost/tables-testing" --batch-size=500 \
---config=examples/usa-spending-contracts.conf.js
+curl --silent https://api.github.com/users/zzolo/followers | tables --format=json --db="sqlite://./examples/github.sqlite" --table-name=followers --key="id";
 ```
 
 ## Library use
@@ -141,7 +92,7 @@ tables -i "examples/datafeeds/2016_All_Contracts_Full_20160315.csv" \
 Include like most libraries:
 
 ```js
-var Tables = require("tables");
+const { Tables } = require("tables");
 ```
 
 Import in a CSV file:
@@ -152,42 +103,51 @@ var t = new Tables({
 });
 ```
 
-### Options
+### Library options
 
-- `models`: This is how the database tables are defined. If this is left empty, Tables will try to guess this from some of the data. Data types are the types supported by [Sequelize](http://sequelize.readthedocs.org/en/latest/api/datatypes/). This should be an object like the following:
+- `models`: This is how the database tables are defined. If this is left empty, Tables will try to guess this from some of the data. We use [Sequelize models](http://docs.sequelizejs.com/manual/models-definition.html) to help abstract things for different database. Data types are the types supported by [Sequelize types](http://docs.sequelizejs.com/manual/data-types.html). Overall, the `models` definition is just the options you would normally pass to Sequelize with a little extra.
 
 ```js
   {
     "modelName": {
-      tableName: "table_name",
       // Fields are the same field definitions for Sequelize with a couple extra parts
-      // See: http://sequelize.readthedocs.org/en/latest/docs/models-definition/
+      // See: http://docs.sequelizejs.com/manual/models-definition.html
       fields: {
         field1: {
-          // Input field.  Used for auto-parsing
-          input: "Field 1",
-          // The new name
-          name: "field1",
+          // Input field.  Used for auto-transforming of the data
+          tablesInputColumn: "Field Name From Input Like CSV",
+          // The database column name (optional)
+          field: "db_column_name",
           // Sequelize type
           type: new Sequelize.String(64)
+          // Any other sequelize options
+          // ....
         },
         field_number: {
           input: "Some Number Fld",
-          name: "field_number",
+          name: "db_field_number",
           type: new Sequelize.BIGINT
         }
       },
       // Options for defining a Sequelize model
-      // See: http://sequelize.readthedocs.org/en/latest/docs/models-definition/#configuration
+      // See: http://docs.sequelizejs.com/manual/models-definition.html
       options: {
         indexes: [
           {
-            fields: ["field1", "field_number"],
+            // This should be the db column name
+            fields: ["db_column_name", "db_field_number"],
             unique: true
           }
-        ]
+        ],
+        // Repeated from key
+        modelName: "modelName",
+        tableName: "db_table_name",
+        // Any other sequelize options
+        // ....
       }
     },
+
+    // There can be more than one model
     "anotherModel": {
       tableName: "another_table",
       ...
@@ -195,38 +155,32 @@ var t = new Tables({
   }
 ```
 
-- `dbOptions`: Tables uses [Sequelize](http://sequelize.readthedocs.org/) as its ORM to more easily support multiple database backends. This options is an object that goes into `new Sequelize(uri, options)`. The default of this will change a bit depending on what database is used.
-- `inputOptions`: Options to pass to the stream parser. This will depend on what `inputType` option is given and the defaults change on that as well. See [tito](https://github.com/shawnbot/tito) for full options.
+- `formatOptions`: Options to pass to the stream parser. This will depend on what `inputType` option is given and the defaults change on that as well. See [tito](https://github.com/shawnbot/tito) for full options.
   - The CSV parser is [fast-csv](https://github.com/C2FO/fast-csv)
   - The JSON parser is [JSONstream](https://github.com/dominictarr/JSONStream) and should be in a format like `{ path: "*" }`.
   - The HTML table parser can use a CSS selector to get the table with some like `{ selector: ".table" }`
-- `parser`: Custom parser function. Takes two arguments: the first is the "row" of auto-parsed data, and second is the "row" of the original data from the pipe (CSV, JSON, custom, etc).
-- `autoparse`: Boolean. Turn off or on the auto-parsing of the piped data. This happens before the `parse` function.
-- `pipe`: A custom pipe function such as [byline](https://www.npmjs.com/package/byline).
-- `resumable`: Boolean to attempt to be make the import resumable. Only really necessary if using a custom `pipe` that can support this.
+- `transformer`: Custom transform function that will get run before loading data into the database. If not provided, Tables will use the an automatic transform function that uses the models to try to match up columns. The context is the Tables object and arguments are:
+  - `data`: Data coming from format pipe.
+  - `models`: Models configuration.
+  - `options`: Options that were given or configured by the Tables object.
+- `fieldsToIndex`: Used if guessing models (i.e. `models` options is not provided). This should be a JS regular expression or a string version of a regular expression.
+- `dbOptions`: Tables uses [Sequelize](http://sequelize.readthedocs.org/) as its ORM to more easily support multiple database backends. This options is an object that goes into `new Sequelize(uri, options)`. Defaults in here are important for regular Tables usage.
 
 The following are all options that correspond to command-line options; see that section for more description.
 
-- `input`: `--input`, path to file.
-- `inputType`: `--type`, string, see valid values above.
-- `db`: `--db`, DB URI. This can be provided with the `TABLES_DB_URI` environment variable. Examples:
-  - `sqlite://./path/to/db.sql`
-  - `mysql://username:password@localhost:3306/database`
-  - `postgres://username:password@localhost:5432/database`
-- `tableName`: `--table-name`, string. This is only used if the `models` configuration is not provided.
-- `key`: `--key`, string. This is only used if the `models` configuration is not provided.
-- `id`: `--id`, string.
-- `restart`: `--restart`, boolean.
-- `batchSize`: `--batch-size`, integer.
-- `dataPath`: `--data`, path to file.
-- `dateFormat`: `--date-format`, string.
-- `datetimeFormat`: `--datetime-format`, string.
-- `output`: Opposite of `--silent`, boolean.
-- `errorHandler`: A custom function to run when errors are thrown. Gets passed the error. Mostly used for the command line tool.
-
-## Troubleshooting
-
-- If you see an error like `Cannot find module '[..]/node_modules/sqlite3/lib/binding/node-v47-darwin-x64/node_sqlite3.node'`, you may want to switch versions of node to get the sqlite module to work (try [n](https://www.npmjs.com/package/n) to manage multiple versions).
+| Library option   | CLI option          | Notes                                                                              |
+| ---------------- | ------------------- | ---------------------------------------------------------------------------------- |
+| `input`          | `--input`           |                                                                                    |
+| `format`         | `--format`          |                                                                                    |
+| `db`             | `--db`              | Suggested to use `TABLES_DB_URI` environment variable if you are using a password. |
+| `tableName`      | `--table-name`      |                                                                                    |
+| `key`            | `--key`             |                                                                                    |
+| `batchSize`      | `--batch-size`      |                                                                                    |
+| `guessSize`      | `--guess-size`      |                                                                                    |
+| `dateFormat`     | `--date-format`     |                                                                                    |
+| `datetimeFormat` | `--datetime-format` |                                                                                    |
+| `overwrite`      | `--overwrite`       |                                                                                    |
+| `silent`         | `--silent`          |                                                                                    |
 
 ## Tests
 
@@ -235,10 +189,3 @@ Tests are run through mocha; after a `npm install`, do the following:
 ```bash
 npm run test
 ```
-
-## Publishing
-
-1. Update `package.json` with the new version.
-1. `git tag X.X.X`
-1. `git push origin master --tags`
-1. `npm publish`
