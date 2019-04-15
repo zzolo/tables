@@ -11,7 +11,8 @@
     "example-water": "./bin/tables.js -i examples/nyc-water-quality-complaints.csv",
     "example-water-silent": "./bin/tables.js -i examples/nyc-water-quality-complaints.csv --db=sqlite://examples/water-silent.sqlite --silent",
     "example-water-advanced": "./bin/tables.js -i examples/nyc-water-quality-complaints.csv --db=sqlite://examples/water-advanced.sqlite --key=unique_key --index-fields=\".*date,.*name,latitude,longtitude,.*borough,status\" --overwrite",
-    "example-water-transformer": "./bin/tables.js -i examples/nyc-water-quality-complaints.csv --db=sqlite://examples/water-transformer.sqlite --key=custom_key --transformer=examples/nyc-water-example-transformer.js --overwrite"
+    "example-water-transformer": "./bin/tables.js -i examples/nyc-water-quality-complaints.csv --db=sqlite://examples/water-transformer.sqlite --key=custom_key --transformer=examples/nyc-water-example-transformer.js --overwrite",
+    "example-water-pipe-no-db": "cat examples/nyc-water-quality-complaints.csv | ./bin/tables.js && ls tables-import.sqlite"
   },
   "repository": {
     "type": "git",
