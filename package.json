@@ -7,8 +7,8 @@
     "tables": "bin/tables.js"
   },
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha tests/*",
-    "example-water": "./bin/tables -i examples/nyc-water-quality-complaints.csv"
+    "test": "mocha tests/*",
+    "example-water": "./bin/tables.js -i examples/nyc-water-quality-complaints.csv"
   },
   "repository": {
     "type": "git",

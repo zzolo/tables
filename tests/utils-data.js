@@ -1,4 +1,4 @@
-/* global describe, it, before, beforeEach, after, afterEach */
+/* global describe, it */
 
 // Dependencies
 var assert = require('assert');
@@ -6,7 +6,7 @@ var moment = require('moment-timezone');
 var utils = require('../lib/utils-data.js');
 
 // Utils tests
-describe('utils', () => {
+describe('utils-data', () => {
   // standardizeInput function
   describe('standardizeInput', () => {
     it('should return null for false-like values', () => {

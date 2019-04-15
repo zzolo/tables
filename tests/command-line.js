@@ -1,14 +1,26 @@
-/* global describe, it, before, beforeEach, after, afterEach */
+/* global describe, it, afterEach */
 
 // Dependencies
-var assert = require('assert');
-var exec = require('child_process').exec;
-var path = require('path');
-var fixturesPath = path.join(__dirname, './fixtures');
-var commandPath = path.join(__dirname, '../bin', 'tables.js');
+const fs = require('fs');
+const assert = require('assert');
+const exec = require('child_process').exec;
+const path = require('path');
+
+// Command
+const commandPath = path.join(__dirname, '../bin', 'tables.js');
 
 // Fixtures
-var fixtureWithHeaders = path.join(fixturesPath, 'test-with-headers.csv');
+const fixturesPath = path.join(__dirname, './fixtures');
+const fixtureWithHeaders = path.join(fixturesPath, 'test-with-headers.csv');
+
+// AFter each remove sqlite files
+afterEach(() => {
+  let f = path.join(fixturesPath, 'test-with-headers.sqlite');
+
+  if (fs.existsSync(f)) {
+    fs.unlinkSync(f);
+  }
+});
 
 // DB tests
 describe('command line', () => {
@@ -16,7 +28,7 @@ describe('command line', () => {
   describe('return value', () => {
     it('should return 0 when ok', done => {
       exec(`${commandPath} -i ${fixtureWithHeaders}`, done);
-    });
+    }).timeout(4000);
 
     it('should return 1 when not ok', done => {
       exec(commandPath + ' -t badtype -i ' + fixtureWithHeaders, function(
@@ -31,6 +43,6 @@ describe('command line', () => {
 
         done();
       });
-    });
+    }).timeout(4000);
   });
 });
