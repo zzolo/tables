@@ -14,7 +14,8 @@
     "example-water-transformer": "./bin/tables.js -i examples/nyc-water-quality-complaints.csv --db=sqlite://examples/water-transformer.sqlite --key=custom_key --transformer=examples/nyc-water-example-transformer.js --overwrite",
     "example-water-pipe-no-db": "cat examples/nyc-water-quality-complaints.csv | ./bin/tables.js && ls tables-import.sqlite",
     "example-water-remote": "curl --silent \"https://data.cityofnewyork.us/api/views/qfe3-6dkn/rows.csv\" | tables --db=sqlite://examples/water-remote.sqlite --overwrite -y",
-    "example-github-json": "curl --silent https://api.github.com/users/zzolo/followers | tables --format=json --db=sqlite://./examples/github-followers.sqlite --table-name=followers --key=id"
+    "example-github-json": "curl --silent https://api.github.com/users/zzolo/followers | tables --format=json --db=sqlite://./examples/github-followers.sqlite --table-name=followers --key=id",
+    "example-movie-render": "terminalizer render docs/tables-examples.terminalizer.yml -o docs/tables-examples.terminalizer.gif"
   },
   "repository": {
     "type": "git",
@@ -57,6 +58,7 @@
   },
   "devDependencies": {
     "eslint": "^5.16.0",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "terminalizer": "^0.6.1"
   }
 }
