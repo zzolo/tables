@@ -214,3 +214,7 @@ Tests are run through mocha; after a `npm install`, do the following:
 ```bash
 npm run test
 ```
+
+## Credits
+
+Tables was worked on while I worked at WNYC and Star Tribune.
