@@ -77,7 +77,7 @@ cat filename.json | tables -f json
 Get data from the NYC Data Portal about water quality complaints and then create an SQLite database of the same name. This will create `examples/nyc-water-quality-complaints.sql` with a `nyc_water_quality_complaints` table that has all the data.
 
 ```sh
-$ curl --silent "https://data.cityofnewyork.us/api/views/qfe3-6dkn/rows.csv" | tables --db sqlite://nyc-water-quality-complaints.sqlite --table-name nyc_water_complaints;
+$ curl --silent "https://data.cityofnewyork.us/api/views/qfe3-6dkn/rows.csv" | tables --db="sqlite://nyc-water-quality-complaints.sqlite" --table-name="nyc_water_complaints";
 $ sqlite3 nyc-water-quality-complaints.sqlite
 sqlite> .tables
 sqlite> SELECT * FROM nyc_water_complaints;
@@ -85,8 +85,20 @@ sqlite> SELECT * FROM nyc_water_complaints;
 
 Put my Github followers into an SQLite database named `github.sql` and table name `followers`:
 
-```bash
-curl --silent https://api.github.com/users/zzolo/followers | tables --format=json --db="sqlite://./examples/github.sqlite" --table-name=followers --key="id";
+```sh
+curl --silent "https://api.github.com/users/zzolo/followers" | tables --format="json" --db="sqlite://./examples/github.sqlite" --table-name="followers" --key="id";
+```
+
+Using a little script to turn a paging API into [ndjson](http://ndjson.org/), we can get all 40k+ candidates from the [FEC API](https://api.open.fec.gov/developers/).
+
+```sh
+FEC_API_KEY=xxxxx node examples/api-pager.js --uri="https://api.open.fec.gov/v1/candidates/?per_page=100&page=[[page]]&api_key=$FEC_API_KEY" --results="results" --page="pagination.page" --pages="pagination.pages" | tables --db="sqlite://examples/fec.sqlite" --table-name="candidates" --key="candidate_id"
+```
+
+Or, use the [FEC bulk downloads](https://www.fec.gov/data/browse-data/?tab=bulk-data) to get candidates from a specific year:
+
+```sh
+curl -L --silent "https://www.fec.gov/files/bulk-downloads/2020/weball20.zip" | funzip | tables --db="sqlite://examples/fec-bulk.sqlite" --table-name="candidates" --key="CAND_ID" --csv-delimiter="|" --csv-headers="CAND_ID,CAND_NAME,CAND_ICI,PTY_CD,CAND_PTY_AFFILIATION,TTL_RECEIPTS,TRANS_FROM_AUTH,TTL_DISB,TRANS_TO_AUTH,COH_BOP, COH_COP,CAND_CONTRIB,CAND_LOANS,OTHER_LOANS,CAND_LOAN_REPAY,OTHER_LOAN_REPAY,DEBTS_OWED_BY,TTL_INDIV_CONTRIB,CAND_OFFICE_ST,CAND_OFFICE_DISTRICT,SPEC_ELECTION,PRIM_ELECTION,RUN_ELECTION,GEN_ELECTION,GEN_ELECTION_PRECENT,OTHER_POL_CMTE_CONTRIB,POL_PTY_CONTRIB,CVG_END_DT,INDIV_REFUNDS,CMTE_REFUNDS"
 ```
 
 ## Library use
