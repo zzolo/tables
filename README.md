@@ -11,6 +11,7 @@ Tables is a simple command-line tool and powerful library for importing data lik
 
 - To include as a library: `npm install tables`
 - To use as a command-line tool: `npm install -g tables`
+  - Or you can use directly via `npx`: `npx tables ...`
 
 ## Features
 
