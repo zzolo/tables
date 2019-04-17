@@ -2,8 +2,8 @@
 
 Tables is a simple command-line tool and powerful library for importing data like a CSV or JSON file into relational database tables. The goal is to make data import easy, configurable, and stable for large datasets into a relational database for better analysis.
 
-[![Build Status](https://travis-ci.org/zzolo/tables.svg?branch=master)](https://travis-ci.org/zzolo/tables) [![Dependencies](https://david-dm.org/zzolo/tables.svg)](https://david-dm.org/zzolo/tables)
-[![License](https://img.shields.io/npm/l/tables.svg)]()
+[![Image showing build status with Travis CI](https://travis-ci.org/zzolo/tables.svg?branch=master "Build Status")](https://travis-ci.org/zzolo/tables) [![Image showing status of NPM depencies](https://david-dm.org/zzolo/tables.svg)](https://david-dm.org/zzolo/tables "Dependencies")
+[![Image showing license for project](https://img.shields.io/npm/l/tables.svg "License")]()
 
 ![Animated gif showing basic usage of Tables](https://github.com/zzolo/tables/raw/master/docs/tables-examples.terminalizer.gif "Basic Tables usage")
 
