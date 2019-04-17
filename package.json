@@ -15,6 +15,7 @@
     "example-water-pipe-no-db": "cat examples/nyc-water-quality-complaints.csv | ./bin/tables.js && ls tables-import.sqlite",
     "example-water-remote": "curl --silent \"https://data.cityofnewyork.us/api/views/qfe3-6dkn/rows.csv\" | tables --db=sqlite://examples/water-remote.sqlite --overwrite -y",
     "example-github-json": "curl --silent https://api.github.com/users/zzolo/followers | tables --format=json --db=sqlite://./examples/github-followers.sqlite --table-name=followers --key=id",
+    "examples": "npm run example-water && npm run example-water-silent && npm run example-water-advanced && npm run example-water-pipe-no-db && npm run example-water-remote && npm run example-github-json",
     "example-movie-render": "terminalizer render docs/tables-examples.terminalizer.yml -o docs/tables-examples.terminalizer.gif"
   },
   "repository": {
@@ -52,7 +53,7 @@
     "pg": "^7.9.0",
     "pg-hstore": "^2.3.2",
     "replace-ext": "^1.0.0",
-    "sequelize": "^5.2.12",
+    "sequelize": "^5.3.0",
     "sqlite3": "^4.0.6",
     "tito": "^0.4.0"
   },
