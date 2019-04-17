@@ -18,7 +18,7 @@ config:
   # Explicitly set the number of rows
   # or use `auto` to take the current
   # number of rows of your shell
-  rows: 20
+  rows: 12
 
   # Amount of times to repeat GIF
   # If value is -1, play once
@@ -28,7 +28,7 @@ config:
 
   # Quality
   # 1 - 100
-  quality: 75
+  quality: 100
 
   # Delay between frames in ms
   # If the value is `auto` use the actual recording delays
@@ -93,417 +93,203 @@ config:
 
 # Records, feel free to edit them
 records:
-  - delay: 951
+  - delay: 100
     content: t
-  - delay: 88
+  - delay: 100
     content: "a"
-  - delay: 136
+  - delay: 100
     content: b
-  - delay: 56
+  - delay: 100
     content: l
-  - delay: 104
+  - delay: 100
     content: e
-  - delay: 152
+  - delay: 100
     content: s
-  - delay: 145
+  - delay: 100
     content: " "
-  - delay: 142
+  - delay: 100
     content: "-"
-  - delay: 265
+  - delay: 100
     content: i
-  - delay: 183
+  - delay: 100
     content: " "
-  - delay: 553
+  - delay: 100
     content: w
-  - delay: 289
+  - delay: 100
     content: a
-  - delay: 159
+  - delay: 100
     content: t
-  - delay: 152
+  - delay: 100
     content: e
-  - delay: 48
+  - delay: 100
     content: r
-  - delay: 360
+  - delay: 100
     content: "-"
-  - delay: 176
+  - delay: 100
     content: c
-  - delay: 120
+  - delay: 100
     content: o
-  - delay: 56
+  - delay: 100
     content: m
-  - delay: 72
+  - delay: 100
     content: p
-  - delay: 128
+  - delay: 100
     content: l
-  - delay: 113
+  - delay: 100
     content: a
-  - delay: 119
+  - delay: 100
     content: i
-  - delay: 56
+  - delay: 100
     content: "n"
-  - delay: 304
+  - delay: 100
     content: t
-  - delay: 200
+  - delay: 100
     content: s
-  - delay: 871
+  - delay: 100
     content: .
-  - delay: 289
+  - delay: 100
     content: c
-  - delay: 96
+  - delay: 100
     content: s
-  - delay: 136
+  - delay: 100
     content: v
-  - delay: 272
+  - delay: 100
     content: " "
-  - delay: 432
+  - delay: 100
     content: "-"
-  - delay: 145
+  - delay: 100
     content: "-"
-  - delay: 247
+  - delay: 100
     content: k
-  - delay: 112
+  - delay: 100
     content: e
-  - delay: 128
+  - delay: 100
     content: "y"
-  - delay: 384
+  - delay: 100
     content: =
-  - delay: 480
+  - delay: 100
     content: u
-  - delay: 48
+  - delay: 100
     content: "n"
-  - delay: 144
+  - delay: 100
     content: i
-  - delay: 80
+  - delay: 100
     content: q
-  - delay: 104
+  - delay: 100
     content: u
-  - delay: 103
+  - delay: 100
     content: e
-  - delay: 217
+  - delay: 100
     content: _
-  - delay: 449
+  - delay: 100
     content: k
-  - delay: 119
+  - delay: 100
     content: e
-  - delay: 119
+  - delay: 100
     content: "y"
-  - delay: 703
+  - delay: 500
     content: "\e[?1l\e>\e[?2004l\r\r\n\e]2;tables -i water-complaints.csv --key=unique_key\a\e]1;tables\a"
   - delay: 416
     content: "\e[?25l \r\n     ⠋ Connecting to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n \r\n\r\n\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     ⠙ Connecting to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     ⠋ Connecting to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n \r\n\r\n\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     ⠹ Connecting to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     ⠙ Connecting to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     ⠋ Guessing model from first \e[36m300\e[39m rows of data \r\n \r\n\r\n\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     ⠸ Connecting to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     ⠹ Connecting to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     ⠙ Guessing model from first \e[36m300\e[39m rows of data \r\n     ⠋ Setting up tables:  \r\n \r\n\r\n\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     ⠼ Connecting to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     ⠸ Connecting to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     ⠹ Guessing model from first \e[36m300\e[39m rows of data \r\n     ⠙ Setting up tables:  \r\n     ⠋ \e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m0%\e[39m Extracting \e[35mcsv\e[39m data \r\n \r\n\r\n\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     ⠴ Connecting to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     ⠼ Connecting to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     ⠸ Guessing model from first \e[36m300\e[39m rows of data \r\n     ⠹ Setting up tables:  \r\n     ⠙ \e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m0%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠋ Loading  rows into database \r\n \r\n\r\n"
-  - delay: 91
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     ⠼ Guessing model from first \e[36m300\e[39m rows of data \r\n     ⠸ Setting up tables:  \r\n     ⠹ \e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m0%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠙ Loading  rows into database \r\n \r\n\r\n"
   - delay: 438
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     ⠼ Setting up tables:  \r\n     ⠸ \e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m0%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠹ Loading  rows into database \r\n \r\n\r\n"
   - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠋ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m28%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠼ Loaded \e[36m0\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 138
+  - delay: 120
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠙ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m28%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠸ Loaded \e[36m0\e[39m rows into database \r\n \r\n\r\n"
   - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠹ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m28%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠼ Loaded \e[36m0\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 111
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠼ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m30%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠋ Loaded \e[36m500\e[39m rows into database \r\n \r\n\r\n"
   - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠴ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m30%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠦ Loaded \e[36m500\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 112
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠏ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m34%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠦ Loaded \e[36m1,000\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 102
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠋ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m34%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠇ Loaded \e[36m1,000\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 118
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠼ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m39%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠇ Loaded \e[36m1,500\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 107
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠴ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m39%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠋ Loaded \e[36m1,500\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 117
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠏ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m43%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠋ Loaded \e[36m2,000\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 102
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠋ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m43%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠹ Loaded \e[36m2,000\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 116
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠼ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m47%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠼ Loaded \e[36m2,500\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 108
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠴ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m47%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠼ Loaded \e[36m2,500\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 112
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠏ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m52%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠇ Loaded \e[36m3,000\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 99
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠋ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m52%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠦ Loaded \e[36m3,000\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 112
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠼ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m56%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠹ Loaded \e[36m3,500\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 102
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠴ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m56%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠇ Loaded \e[36m3,500\e[39m rows into database \r\n \r\n\r\n"
   - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠏ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m61%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠧ Loaded \e[36m4,000\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 120
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠋ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m61%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠋ Loaded \e[36m4,000\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 105
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠴ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m67%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠸ Loaded \e[36m4,500\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 114
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠦ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m67%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠹ Loaded \e[36m4,500\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 105
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠋ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m71%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠏ Loaded \e[36m5,000\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 109
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠙ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m71%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠼ Loaded \e[36m5,000\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 118
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠴ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m76%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠼ Loaded \e[36m5,500\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 102
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠦ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m76%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠦ Loaded \e[36m5,500\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 116
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠋ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m80%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠏ Loaded \e[36m6,000\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 102
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠙ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m80%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠇ Loaded \e[36m6,000\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 107
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠴ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m84%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠹ Loaded \e[36m6,500\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 109
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠦ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m84%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠋ Loaded \e[36m6,500\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 104
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠋ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m89%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠦ Loaded \e[36m7,000\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 104
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠙ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m89%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠹ Loaded \e[36m7,000\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 102
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠴ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m93%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠇ Loaded \e[36m7,500\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 99
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠦ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m93%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠼ Loaded \e[36m7,500\e[39m rows into database \r\n \r\n\r\n"
   - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠧ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m\e[34m░\e[39m \e[36m93%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠴ Loaded \e[36m7,500\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 112
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠙ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m \e[36m98%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠼ Loaded \e[36m8,000\e[39m rows into database \r\n \r\n\r\n"
   - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     ⠹ \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m░\e[39m \e[36m98%\e[39m Extracting \e[35mcsv\e[39m data \r\n     ⠧ Loaded \e[36m8,000\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 116
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     \e[32m✔\e[39m \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m \e[36m100%\e[39m Extracted \e[35mcsv\e[39m data \r\n     ⠸ Loaded \e[36m8,500\e[39m rows into database \r\n \r\n\r\n"
   - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     \e[32m✔\e[39m \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m \e[36m100%\e[39m Extracted \e[35mcsv\e[39m data \r\n     ⠏ Loaded \e[36m8,500\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 101
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     \e[32m✔\e[39m \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m \e[36m100%\e[39m Extracted \e[35mcsv\e[39m data \r\n     ⠇ Loaded \e[36m9,000\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 103
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     \e[32m✔\e[39m \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m \e[36m100%\e[39m Extracted \e[35mcsv\e[39m data \r\n     ⠙ Loaded \e[36m9,000\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 108
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     \e[32m✔\e[39m \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m \e[36m100%\e[39m Extracted \e[35mcsv\e[39m data \r\n     ⠋ Loaded \e[36m9,500\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 101
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     \e[32m✔\e[39m \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m \e[36m100%\e[39m Extracted \e[35mcsv\e[39m data \r\n     ⠸ Loaded \e[36m9,500\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 102
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     \e[32m✔\e[39m \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m \e[36m100%\e[39m Extracted \e[35mcsv\e[39m data \r\n     ⠙ Loaded \e[36m10,000\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 99
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     \e[32m✔\e[39m \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m \e[36m100%\e[39m Extracted \e[35mcsv\e[39m data \r\n     ⠴ Loaded \e[36m10,000\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 116
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     \e[32m✔\e[39m \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m \e[36m100%\e[39m Extracted \e[35mcsv\e[39m data \r\n     ⠼ Loaded \e[36m10,500\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 104
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     \e[32m✔\e[39m \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m \e[36m100%\e[39m Extracted \e[35mcsv\e[39m data \r\n     ⠇ Loaded \e[36m10,500\e[39m rows into database \r\n \r\n\r\n"
-  - delay: 5
+  - delay: 100
     content: "\e[?25l\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G \r\n     \e[32m✔\e[39m Connected to \e[35msqlite\e[39m database: \e[36mwater-complaints.sqlite\e[39m \r\n     \e[32m✔\e[39m Connected to input \e[35mfile\e[39m: \e[36mwater-complaints.csv\e[39m \r\n     \e[32m✔\e[39m Guessed model from first \e[36m300\e[39m rows of data \r\n     \e[32m✔\e[39m Setup tables: \e[36mwater_complaints\e[39m (38 cols) \r\n     \e[32m✔\e[39m \e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m\e[34m█\e[39m \e[36m100%\e[39m Extracted \e[35mcsv\e[39m data \r\n     \e[32m✔\e[39m Loaded \e[36m10,860\e[39m rows into database \r\n \r\n\r\n\e[?25h\e[?25h"
-  - delay: 1044
-    content: s
-  - delay: 64
-    content: "\bsq"
-  - delay: 128
-    content: l
-  - delay: 184
-    content: i
-  - delay: 112
-    content: t
-  - delay: 72
-    content: e
-  - delay: 608
-    content: "3"
-  - delay: 969
-    content: " "
-  - delay: 311
-    content: w
-  - delay: 152
-    content: a
-  - delay: 88
-    content: t
-  - delay: 160
-    content: e
-  - delay: 40
-    content: r
-  - delay: 504
-    content: "-"
-  - delay: 184
-    content: c
-  - delay: 96
-    content: o
-  - delay: 81
-    content: m
-  - delay: 16
-    content: p
-  - delay: 168
-    content: l
-  - delay: 255
-    content: a
-  - delay: 104
-    content: i
-  - delay: 48
-    content: "n"
-  - delay: 119
-    content: t
-  - delay: 168
-    content: s
-  - delay: 240
-    content: .
-  - delay: 488
-    content: s
-  - delay: 208
-    content: q
-  - delay: 88
-    content: l
-  - delay: 175
-    content: i
-  - delay: 65
-    content: t
-  - delay: 88
-    content: e
-  - delay: 823
-    content: "\e[?1l\e>\e[?2004l\r\r\n\e]2;sqlite3 water-complaints.sqlite\a\e]1;sqlite3\a"
-  - delay: 16
-    content: "SQLite version 3.27.2 2019-02-25 16:06:06\r\nEnter \".help\" for usage hints.\r\nsqlite> "
-  - delay: 1126
-    content: .
-  - delay: 111
-    content: t
-  - delay: 105
-    content: a
-  - delay: 95
-    content: b
-  - delay: 80
-    content: l
-  - delay: 72
-    content: e
-  - delay: 168
-    content: s
-  - delay: 111
-    content: "\r\nwater_complaints\r\nsqlite> "
-  - delay: 7057
-    content: .
-  - delay: 479
-    content: m
-  - delay: 48
-    content: o
-  - delay: 104
-    content: d
-  - delay: 360
-    content: e
-  - delay: 272
-    content: " "
-  - delay: 136
-    content: c
-  - delay: 79
-    content: o
-  - delay: 192
-    content: l
-  - delay: 176
-    content: u
-  - delay: 191
-    content: m
-  - delay: 136
-    content: "n"
-  - delay: 464
-    content: "\r\nsqlite> "
-  - delay: 633
-    content: .
-  - delay: 360
-    content: h
-  - delay: 80
-    content: e
-  - delay: 105
-    content: a
-  - delay: 95
-    content: d
-  - delay: 256
-    content: e
-  - delay: 87
-    content: r
-  - delay: 305
-    content: s
-  - delay: 688
-    content: " "
-  - delay: 144
-    content: o
-  - delay: 72
-    content: "n"
-  - delay: 295
-    content: "\r\nsqlite> "
-  - delay: 585
-    content: S
-  - delay: 144
-    content: E
-  - delay: 113
-    content: L
-  - delay: 95
-    content: E
-  - delay: 168
-    content: C
-  - delay: 175
-    content: T
-  - delay: 168
-    content: " "
-  - delay: 449
-    content: "*"
-  - delay: 176
-    content: " "
-  - delay: 657
-    content: F
-  - delay: 175
-    content: R
-  - delay: 88
-    content: O
-  - delay: 49
-    content: M
-  - delay: 216
-    content: " "
-  - delay: 871
-    content: w
-  - delay: 152
-    content: a
-  - delay: 88
-    content: t
-  - delay: 128
-    content: e
-  - delay: 79
-    content: r
-  - delay: 1097
-    content: _
-  - delay: 288
-    content: c
-  - delay: 66
-    content: o
-  - delay: 86
-    content: m
-  - delay: 88
-    content: p
-  - delay: 128
-    content: l
-  - delay: 608
-    content: a
-  - delay: 112
-    content: i
-  - delay: 64
-    content: "n"
-  - delay: 112
-    content: t
-  - delay: 159
-    content: s
-  - delay: 224
-    content: " "
-  - delay: 672
-    content: L
-  - delay: 241
-    content: I
-  - delay: 153
-    content: M
-  - delay: 134
-    content: I
-  - delay: 129
-    content: T
-  - delay: 391
-    content: " "
-  - delay: 1073
-    content: "1"
-  - delay: 529
-    content: ;
-  - delay: 294
-    content: "\r\nunique_key  created_date                    closed_date                     agency      agency_name                             complaint_type  descriptor                  location_type  incident_zip  incident_address  street_name    cross_street_1  cross_street_2  intersection_street_1  intersection_street_2  address_type  city           landmark    facility_type  status      due_date    resolution_action_updated_date  community_board   borough        x_coordinate_state_plane  y_coordinate_state_plane  park_facility_name  park_borough   vehicle_type  taxi_company_borough  taxi_pick_up_location  bridge_highway_name  bridge_highway_direction  road_ramp   bridge_highway_segment  latitude          longitude          location                              \r\n----------  ------------------------------  ------------------------------  ----------  --------------------------------------  --------------  --------------------------  -------------  ------------  ----------------  -------------  --------------  --------------  ---------------------  ---------------------  ------------  -------------  ----------  -------------  ----------  ----------  ------------------------------  ----------------  -------------  ------------------------  ------------------------  ------------------  -------------  ------------  --------------------  ---------------------  -------------------  ------------------------  ----------  ----------------------  ----------------  -----------------  --------------------------------------\r\n15636014    2010-01-01 19:38:00.000 -06:00  2016-02-17 17:50:00.000 -06:00  DEP         Department of Environmental Protection  Water Quality   Taste/Odor, Chemical (QA2)                 10301         6 CALDERA PLACE   CALDERA PLACE  HENDERSON AVE   PROSPECT AVE                                                  ADDRESS       STATEN ISLAND                             Closed                  2016-02-17 17:50:00.000 -06:00  01 STATEN ISLAND  STATEN ISLAND  956391                    172375                                        STATEN ISLAND                                                                                                                                                40.6397623488117  -74.1003814691828  (40.6397623488117, -74.10038146918278)\r\nsqlite> "
   - delay: 1000
     content: "\r\n"
   - delay: 1000
     content: " "
-  - delay: 1000
-    content: "\r\n"

@@ -5,6 +5,8 @@ Tables is a simple command-line tool and powerful library for importing data lik
 [![Build Status](https://travis-ci.org/zzolo/tables.svg?branch=master)](https://travis-ci.org/zzolo/tables) [![Dependencies](https://david-dm.org/zzolo/tables.svg)](https://david-dm.org/zzolo/tables)
 [![License](https://img.shields.io/npm/l/tables.svg)]()
 
+![Animated gif showing basic usage of Tables](https://github.com/zzolo/tables/raw/master/docs/tables-examples.terminalizer.gif "Basic Tables usage")
+
 ## Install
 
 - To include as a library: `npm install tables`
