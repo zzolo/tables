@@ -49,7 +49,7 @@ command.option(
                                   library for more info.`
 );
 command.option(
-  '-m, --html-selector [path]',
+  '-H, --html-selector [path]',
   'CSS selector to target specific HTML table for html input type.'
 );
 command.option(
@@ -74,6 +74,11 @@ command.option(
   `Reference to JS file that exports a function to transform data
                                   guessing model if models not provided, as we well as before db
                                   inserts.`
+);
+command.option(
+  '-m, --models [file]',
+  `Reference to JS file that exports a function to that returns a set
+                                  of Sequelize models.`
 );
 command.option(
   '-a, --date-format [format]',
@@ -156,7 +161,8 @@ async function cli() {
       command.transactions === undefined ? true : !!command.transactions,
     silent: !!command.silent,
     overwrite: !!command.overwrite,
-    transformer: command.transformer ? command.transformer : undefined
+    transformer: command.transformer ? command.transformer : undefined,
+    models: command.models ? command.models : undefined
   };
 
   // Input type specific options
@@ -194,6 +200,18 @@ async function cli() {
         `Issue trying to find or parse transformer file: ${chalk.red(
           e.toString()
         )}`
+      );
+    }
+  }
+  if (options.models) {
+    try {
+      options.models = require(path.resolve(options.models));
+    }
+    catch (e) {
+      handleError(
+        e,
+        t,
+        `Issue trying to find or parse models file: ${chalk.red(e.toString())}`
       );
     }
   }

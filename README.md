@@ -62,7 +62,8 @@ Use the `--help` option to get a full, up-to-date look at what the options are, 
 - `--html-selector`: CSS selector to target specific table when using the `html` type.
 - `--date-format`: Date format to use when guessing date columns and parsing data. Defaults to `MM/DD/YYYY`. See [moment.js](http://momentjs.com/docs/) for options.
 - `--datetime-format`: Datetime format to use when guessing date columns and parsing data. Defaults to `MM/DD/YYYY HH:mm:ss a`. See [moment.js](http://momentjs.com/docs/) for options.
-- `--transformer`: Point to a JS module that exports a function to transform the data before being loaded into the database.
+- `--transformer`: Point to a JS module that exports a function to transform the data before being loaded into the database. See _transformer_ documentation below.
+- `--models`: Point to a JS module that exports a function to define the database models (table layout). See _models_ documentation below.
 - `--config`: Allows to use a JS file that exports configuration for Tables. Any other options will override the values in the file. This allows for options that are not easily supported on a command line. See _Options_ section under _Library Use_.
 
 ### Piping
@@ -131,64 +132,97 @@ await t.start();
 
 ### Library options
 
-- `models`: This is how the database tables are defined. If this is left empty, Tables will try to guess this from some of the data. We use [Sequelize models](http://docs.sequelizejs.com/manual/models-definition.html) to help abstract things for different database. Data types are the types supported by [Sequelize types](http://docs.sequelizejs.com/manual/data-types.html). Overall, the `models` definition is just the options you would normally pass to Sequelize with a little extra.
+- `models`: This is how the database tables are defined. If this is left empty, Tables will try to guess this from some of the data. We use [Sequelize models](http://docs.sequelizejs.com/manual/models-definition.html) to help abstract things for different database. Data types are the types supported by [Sequelize types](http://docs.sequelizejs.com/manual/data-types.html). The only different is that you can attach a `tablesInputColumn` property to each field to help with auto-transforming.
 
-```js
-  {
-    "modelName": {
-      // Fields are the same field definitions for Sequelize with a couple extra parts
-      // See: http://docs.sequelizejs.com/manual/models-definition.html
-      fields: {
-        field1: {
-          // Input field.  Used for auto-transforming of the data
-          tablesInputColumn: "Field Name From Input Like CSV",
-          // The database column name (optional)
-          field: "db_column_name",
-          // Sequelize type
-          type: new Sequelize.String(64)
-          // Any other sequelize options
-          // ....
-        },
-        field_number: {
-          input: "Some Number Fld",
-          name: "db_field_number",
-          type: new Sequelize.BIGINT
-        }
-      },
-      // Options for defining a Sequelize model
-      // See: http://docs.sequelizejs.com/manual/models-definition.html
-      options: {
-        indexes: [
-          {
-            // This should be the db column name
-            fields: ["db_column_name", "db_field_number"],
-            unique: true
+  - Argument `databaseConnection`: This is the Sequelize instance.
+  - Argument `Sequelize`: This is the Sequelize library for getting the data types from.
+  - Argument `options`: The options that were passed to the Tables object.
+  - Context: The context of the function should be the Tables object.
+  - Returns: The function should return an object of Sequelize Models.
+  - Example:
+
+    ```js
+    ...
+    models: (db, Sequelize, options) {
+      class ExampleModel extends Sequelize.Model {}
+      ExampleModel.init(
+        {
+          id: {
+            // This is our only custom field that will help the auto
+            // transformer know how to match up fields
+            tablesInputColumn: 'Unique Key',
+            // Field describes the column name in the database
+            field: 'id',
+            type: Sequelize.STRING(128),
+            primaryKey: true
+          },
+          type: {
+            tablesInputColumn: 'Complaint Type',
+            field: 'type',
+            type: Sequelize.STRING(128)
+          },
+          description: {
+            tablesInputColumn: 'Descriptor',
+            field: 'description',
+            type: Sequelize.TEXT
           }
-        ],
-        // Repeated from key
-        modelName: "modelName",
-        tableName: "db_table_name",
-        // Any other sequelize options
-        // ....
-      }
-    },
+        },
+        {
+          sequelize: db,
+          tableName: 'example_model',
+          indexes: [
+            // These need to be the field name, not the
+            // sequelize name
+            fields: ['type', 'description']
+          ]
+          // These are suggested, but not necessary
+          timestamps: false,
+          underscored: true,
+          freezeTableName: true
+        }
+      );
 
-    // There can be more than one model
-    "anotherModel": {
-      tableName: "another_table",
-      ...
+      return {
+        // The key here is important if writing your own
+        // transformer
+        exampleModel: ExampleModel,
+        // You could have multiple models/tables
+        // anotherTable: AnotherTable,
+        // lookupTable: LookupTable
+      };
     }
-  }
-```
+    ...
+    ```
+
+- `transformer`: Custom transform function that will get run before loading data into the database. If not provided, Tables will use the an automatic transform function that uses the models to try to match up columns. The context is the Tables object and arguments are:
+
+  - Argument `data`: Data coming from format pipe.
+  - Argument `models`: Models configuration. If the `models` options is not provided, the transformer function gets run when guessing models, so this will be undefined when that happens.
+  - Argument `options`: Options that were given or configured by the Tables object.
+  - Context: The context of the function will be the Tables object.
+  - Returns: Should return transformed data, an object where each key correspondes to a model, and each value is the row of data to insert/update.
+  - For example:
+
+    ```js
+    ...
+    transformer: (data, models, options) {
+      return {
+        modelName: {
+          id: data['Unique Key'],
+          thing: data.t + 1,
+          other: data['OTHER']
+        }
+      };
+    }
+    ...
+    ```
 
 - `formatOptions`: Options to pass to the stream parser. This will depend on what `inputType` option is given and the defaults change on that as well. See [tito](https://github.com/shawnbot/tito) for full options.
+
   - The CSV parser is [fast-csv](https://github.com/C2FO/fast-csv)
   - The JSON parser is [JSONstream](https://github.com/dominictarr/JSONStream) and should be in a format like `{ path: "*" }`.
   - The HTML table parser can use a CSS selector to get the table with some like `{ selector: ".table" }`
-- `transformer`: Custom transform function that will get run before loading data into the database. If not provided, Tables will use the an automatic transform function that uses the models to try to match up columns. The context is the Tables object and arguments are:
-  - `data`: Data coming from format pipe.
-  - `models`: Models configuration.
-  - `options`: Options that were given or configured by the Tables object.
+
 - `fieldsToIndex`: Used if guessing models (i.e. `models` options is not provided). This should be a JS regular expression or a string version of a regular expression.
 - `dbOptions`: Tables uses [Sequelize](http://sequelize.readthedocs.org/) as its ORM to more easily support multiple database backends. This options is an object that goes into `new Sequelize(uri, options)`. Defaults in here are important for regular Tables usage.
 
