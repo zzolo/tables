@@ -102,13 +102,26 @@ FEC_API_KEY=xxxxx node examples/api-pager.js --uri="https://api.open.fec.gov/v1/
 Or, use the [FEC bulk downloads](https://www.fec.gov/data/browse-data/?tab=bulk-data) to get candidates from a specific year. The format that the bulk data comes in is pipe (`|`) delimited and does not have headers, but we can account for that with specific arguments.
 
 ```sh
-curl -L --silent "https://www.fec.gov/files/bulk-downloads/2020/weball20.zip" | funzip | tables --db="sqlite://examples/fec-bulk.sqlite" --table-name="candidates" --key="CAND_ID" --csv-delimiter="|" --csv-headers="CAND_ID,CAND_NAME,CAND_ICI,PTY_CD,CAND_PTY_AFFILIATION,TTL_RECEIPTS,TRANS_FROM_AUTH,TTL_DISB,TRANS_TO_AUTH,COH_BOP, COH_COP,CAND_CONTRIB,CAND_LOANS,OTHER_LOANS,CAND_LOAN_REPAY,OTHER_LOAN_REPAY,DEBTS_OWED_BY,TTL_INDIV_CONTRIB,CAND_OFFICE_ST,CAND_OFFICE_DISTRICT,SPEC_ELECTION,PRIM_ELECTION,RUN_ELECTION,GEN_ELECTION,GEN_ELECTION_PRECENT,OTHER_POL_CMTE_CONTRIB,POL_PTY_CONTRIB,CVG_END_DT,INDIV_REFUNDS,CMTE_REFUNDS"
+curl -L --silent "https://www.fec.gov/files/bulk-downloads/2020/weball20.zip" \
+| funzip \
+| tables --db="sqlite://examples/fec-bulk.sqlite" \
+  --table-name="candidates" \
+  --key="CAND_ID" \
+  --csv-delimiter="|" \
+  --csv-headers="CAND_ID,CAND_NAME,CAND_ICI,PTY_CD,CAND_PTY_AFFILIATION,TTL_RECEIPTS,TRANS_FROM_AUTH,TTL_DISB,TRANS_TO_AUTH,COH_BOP, COH_COP,CAND_CONTRIB,CAND_LOANS,OTHER_LOANS,CAND_LOAN_REPAY,OTHER_LOAN_REPAY,DEBTS_OWED_BY,TTL_INDIV_CONTRIB,CAND_OFFICE_ST,CAND_OFFICE_DISTRICT,SPEC_ELECTION,PRIM_ELECTION,RUN_ELECTION,GEN_ELECTION,GEN_ELECTION_PRECENT,OTHER_POL_CMTE_CONTRIB,POL_PTY_CONTRIB,CVG_END_DT,INDIV_REFUNDS,CMTE_REFUNDS"
 ```
 
 Load in 600k+ rows of [ordinance violations in Chicago](https://data.cityofchicago.org/Administration-Finance/Ordinance-Violations/6br9-quuz). This specific examples expands on what fields will be indexed. Indexing will make the database loading a bit slower and will increase disk size (this produced a 500MB+ file), but will make queries faster.
 
 ```sh
-curl -L --silent "https://data.cityofchicago.org/api/views/6br9-quuz/rows.csv?accessType=DOWNLOAD" | tables --db="sqlite://examples/chicago.sqlite" --table-name="ordinance_violations" --key="ID"  --index-fields=".*date,.*name,.*number,.*disposition,.*fine,.*cost,.*code,.*respondents,latitude,longitude,.*borough,status"
+curl -L --silent "https://data.cityofchicago.org/api/views/6br9-quuz/rows.csv?accessType=DOWNLOAD" \
+| tables \
+  --db="sqlite://examples/chicago.sqlite" \
+  --table-name="ordinance_violations" \
+  --key="ID" \
+  --guess-size=1000 \
+  --batch-size=1000 \
+  --index-fields=".*date,.*name,.*number,.*disposition,.*fine,.*cost,.*code,latitude,longitude,.*borough,status"
 ```
 
 ## Library use
