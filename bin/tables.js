@@ -121,6 +121,11 @@ command.option(
   `Turn off using transactions when loading data into the database.  If you don't
                                   use transactions, row count and resuming may not be accurate.`
 );
+command.option(
+  '--no-optimize',
+  `Turn off optimizing tables before and after data is loaded into the database.
+                                  For very large datasets, optimizing could add a significant amount of time.`
+);
 command.option('-s, --silent', 'Suppress output besides errors.');
 // command.option('-u, --debug', 'Output stack trace if available.');
 command.option(
@@ -159,6 +164,7 @@ async function cli() {
     restart: !!command.restart,
     transactions:
       command.transactions === undefined ? true : !!command.transactions,
+    optimize: command.optimize === undefined ? true : !!command.optimize,
     silent: !!command.silent,
     overwrite: !!command.overwrite,
     transformer: command.transformer ? command.transformer : undefined,

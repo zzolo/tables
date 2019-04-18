@@ -64,6 +64,8 @@ Use the `--help` option to get a full, up-to-date look at what the options are, 
 - `--datetime-format`: Datetime format to use when guessing date columns and parsing data. Defaults to `MM/DD/YYYY HH:mm:ss a`. See [moment.js](http://momentjs.com/docs/) for options.
 - `--transformer`: Point to a JS module that exports a function to transform the data before being loaded into the database. See _transformer_ documentation below.
 - `--models`: Point to a JS module that exports a function to define the database models (table layout). See _models_ documentation below.
+- `--no-transactions`: Turn off transactions. Each batch is a single transaction.
+- `--no-optimize`: Turn off optimizations that run before and after database inserts/updates are made. For very large datasets, optimizing could add a significant amount of time Tables takes.
 - `--config`: Allows to use a JS file that exports configuration for Tables. Any other options will override the values in the file. This allows for options that are not easily supported on a command line. See _Options_ section under _Library Use_.
 
 ### Piping
