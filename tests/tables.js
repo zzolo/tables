@@ -175,14 +175,17 @@ describe('tables', () => {
           db: `sqlite://${dbPath}`,
           tableName,
           hooks: {
-            finish: () => {
-              hookCalled = true;
+            finish: (...args) => {
+              hookCalled = args;
             }
           }
         });
 
         await t.start();
         assert.ok(hookCalled);
+        assert.strictEqual(typeof hookCalled[0], 'object');
+        assert.strictEqual(typeof hookCalled[1], 'object');
+        assert.strictEqual(typeof hookCalled[2], 'object');
         done();
       }
       catch (e) {
