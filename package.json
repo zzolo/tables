@@ -1,6 +1,6 @@
 {
   "name": "tables",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Tables is a simple command-line tool and powerful library for importing data like a CSV or JSON file into relational tables quickly and easily.",
   "main": "index.js",
   "bin": {
@@ -9,7 +9,7 @@
   "scripts": {
     "test": "mocha tests/*",
     "example-water": "./bin/tables.js -i examples/nyc-water-quality-complaints.csv",
-    "example-water-silent": "./bin/tables.js -i examples/nyc-water-quality-complaints.csv --db=sqlite://examples/water-silent.sqlite --silent",
+    "example-water-silent": "./bin/tables.js -i examples/nyc-water-quality-complaints.csv --db=sqlite://examples/waterx-silent.sqlite --silent",
     "example-water-advanced": "./bin/tables.js -i examples/nyc-water-quality-complaints.csv --db=sqlite://examples/water-advanced.sqlite --key=unique_key --index-fields=\".*date,.*name,latitude,longitude,.*borough,status\" --overwrite",
     "example-water-transformer": "./bin/tables.js -i examples/nyc-water-quality-complaints.csv --db=sqlite://examples/water-transformer.sqlite --key=custom_key --transformer=examples/nyc-water-example-transformer.js --overwrite",
     "example-water-models": "./bin/tables.js -i examples/nyc-water-quality-complaints.csv --db=sqlite://examples/water-models.sqlite --models=examples/nyc-water-example-models.js --overwrite",
