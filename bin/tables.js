@@ -226,7 +226,6 @@ async function cli() {
   if (command.config) {
     try {
       options = _.defaultsDeep(options, require(path.resolve(command.config)));
-      console.log(require(path.resolve(command.config)));
     }
     catch (e) {
       handleError(
