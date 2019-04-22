@@ -100,7 +100,7 @@ describe('tables', () => {
       try {
         let t = new Tables({
           input: fixtureWithHeaders,
-          //silent: true,
+          silent: true,
           db: `sqlite://${dbPath}`,
           tableName
         });
@@ -157,6 +157,32 @@ describe('tables', () => {
         db.close();
 
         // done
+        done();
+      }
+      catch (e) {
+        done(e);
+      }
+    }).timeout(5000);
+
+    it('should call finish hook', async done => {
+      let tableName = 'tables_start_test_hook';
+      let hookCalled = false;
+
+      try {
+        let t = new Tables({
+          input: fixtureWithHeaders,
+          silent: true,
+          db: `sqlite://${dbPath}`,
+          tableName,
+          hooks: {
+            finish: () => {
+              hookCalled = true;
+            }
+          }
+        });
+
+        await t.start();
+        assert.ok(hookCalled);
         done();
       }
       catch (e) {

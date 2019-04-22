@@ -244,6 +244,8 @@ await t.start();
 
 - `fieldsToIndex`: Used if guessing models (i.e. `models` options is not provided). This should be a JS regular expression or a string version of a regular expression.
 - `dbOptions`: Tables uses [Sequelize](http://sequelize.readthedocs.org/) as its ORM to more easily support multiple database backends. This options is an object that goes into `new Sequelize(uri, options)`. Defaults in here are important for regular Tables usage.
+- `hooks`: An object of functions that get run at certain points during Tables lifecycle. All hooks pass the `sequelize`, `models`, and `options` object, with the Tables instance as the context. The following are the supported hooks:
+  - `finish`: Run right before the final optimize step. Helpful for database updates that can't be performed during import.
 
 The following are all options that correspond to command-line options; see that section for more description.
 
