@@ -140,7 +140,9 @@ Import in a CSV file:
 // Define instance
 let t = new Tables({
   input: "./examples/nyc-water-quality-complaints.csv",
-  db: "sqlite://examples/nyc-water-complaints.sqlite"
+  db: "sqlite://examples/nyc-water-complaints.sqlite",
+  // If running as a library, you probably want to supress the output
+  silent: true
 });
 
 // Run import
