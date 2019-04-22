@@ -111,7 +111,7 @@ curl -L --silent "https://www.fec.gov/files/bulk-downloads/2020/weball20.zip" \
   --csv-headers="CAND_ID,CAND_NAME,CAND_ICI,PTY_CD,CAND_PTY_AFFILIATION,TTL_RECEIPTS,TRANS_FROM_AUTH,TTL_DISB,TRANS_TO_AUTH,COH_BOP, COH_COP,CAND_CONTRIB,CAND_LOANS,OTHER_LOANS,CAND_LOAN_REPAY,OTHER_LOAN_REPAY,DEBTS_OWED_BY,TTL_INDIV_CONTRIB,CAND_OFFICE_ST,CAND_OFFICE_DISTRICT,SPEC_ELECTION,PRIM_ELECTION,RUN_ELECTION,GEN_ELECTION,GEN_ELECTION_PRECENT,OTHER_POL_CMTE_CONTRIB,POL_PTY_CONTRIB,CVG_END_DT,INDIV_REFUNDS,CMTE_REFUNDS"
 ```
 
-Load in 600k+ rows of [ordinance violations in Chicago](https://data.cityofchicago.org/Administration-Finance/Ordinance-Violations/6br9-quuz). This specific examples expands on what fields will be indexed. Indexing will make the database loading a bit slower and will increase disk size (this produced a 500MB+ file), but will make queries faster.
+Load in 600k+ rows of [ordinance violations in Chicago](https://data.cityofchicago.org/Administration-Finance/Ordinance-Violations/6br9-quuz). This specific examples expands on what fields will be indexed. Indexing will make the database loading a bit slower and will increase disk size (this produced a 500MB+ file), but will make queries faster. We also update the model guessing size which helps alleviates issues with guessing field length. And then update the batch size which may help speed things up, though this is dependent on may things.
 
 ```sh
 curl -L --silent "https://data.cityofchicago.org/api/views/6br9-quuz/rows.csv?accessType=DOWNLOAD" \
@@ -121,7 +121,9 @@ curl -L --silent "https://data.cityofchicago.org/api/views/6br9-quuz/rows.csv?ac
   --key="ID" \
   --guess-size=1000 \
   --batch-size=1000 \
-  --index-fields=".*date,.*name,.*number,.*disposition,.*fine,.*cost,.*code,latitude,longitude,.*borough,status"
+  --index-fields=".*date,.*name,.*number,.*disposition,.*fine,.*cost,.*code,latitude,longitude,.*borough,status" \
+  --overwrite \
+  --yes
 ```
 
 ## Library use
