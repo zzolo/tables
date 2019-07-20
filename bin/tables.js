@@ -157,7 +157,7 @@ async function cli() {
       : undefined,
     stringColumns: command.stringColumns
       ? _.map(command.stringColumns.split(','), d => _.snakeCase(d.trim()))
-      : [],
+      : undefined,
     id: command.id ? command.id : undefined,
     fieldsToIndex:
       command.indexFields && command.indexFields.match(/^\//)
