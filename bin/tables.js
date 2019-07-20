@@ -70,6 +70,11 @@ command.option(
                                   comma-delimited list of columns such as "key|column_1" or ".*key|.*id".`
 );
 command.option(
+  '-s, --string-columns [name]',
+  `A comma-delimited list of columns that would be treated as string instead of guessed.
+                                  Only the length of the string would be guessed.`
+);
+command.option(
   '-t, --transformer [file]',
   `Reference to JS file that exports a function to transform data
                                   guessing model if models not provided, as we well as before db
@@ -150,6 +155,9 @@ async function cli() {
     key: command.key
       ? _.map(command.key.split(','), d => _.snakeCase(d.trim()))
       : undefined,
+    stringColumns: command.stringColumns
+      ? _.map(command.stringColumns.split(','), d => _.snakeCase(d.trim()))
+      : [],
     id: command.id ? command.id : undefined,
     fieldsToIndex:
       command.indexFields && command.indexFields.match(/^\//)
@@ -170,7 +178,7 @@ async function cli() {
     transformer: command.transformer ? command.transformer : undefined,
     models: command.models ? command.models : undefined
   };
-
+  
   // Input type specific options
   if (command.jsonPath) {
     options.format = 'json';
