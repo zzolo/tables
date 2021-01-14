@@ -263,6 +263,10 @@ The following are all options that correspond to command-line options; see that 
 | `overwrite`      | `--overwrite`       |                                                                                    |
 | `silent`         | `--silent`          |                                                                                    |
 
+## Debugging
+
+Use the `DEBUG` environment variable to get debug information such as `DEBUG=tables*`.
+
 ## Tests
 
 Tests are run through mocha; after a `npm install`, do the following:
