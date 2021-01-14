@@ -94,103 +94,89 @@ describe('tables', () => {
       }
     });
 
-    it('should create a database table correctly', async done => {
+    it('should create a database table correctly', async () => {
       let tableName = 'tables_start_test';
 
-      try {
-        let t = new Tables({
-          input: fixtureWithHeaders,
-          silent: true,
-          db: `sqlite://${dbPath}`,
-          tableName
-        });
-        await t.start();
+      let t = new Tables({
+        input: fixtureWithHeaders,
+        silent: true,
+        db: `sqlite://${dbPath}`,
+        tableName
+      });
+      await t.start();
 
-        // Make sure there
-        assert.ok(fs.existsSync(dbPath));
+      // Make sure there
+      assert.ok(fs.existsSync(dbPath));
 
-        // Connect to db
-        let db = new sqlite.Database(dbPath);
+      // Connect to db
+      let db = new sqlite.Database(dbPath);
 
-        // Check rows
-        let rows = await sqliteRun(
-          db,
-          'all',
-          `SELECT COUNT(*) AS count FROM ${tableName}`
-        );
-        assert.strictEqual(rows[0].count, 4);
+      // Check rows
+      let rows = await sqliteRun(
+        db,
+        'all',
+        `SELECT COUNT(*) AS count FROM ${tableName}`
+      );
+      assert.strictEqual(rows[0].count, 4);
 
-        // Check data
-        let all = await sqliteRun(db, 'all', `SELECT * FROM ${tableName}`);
-        assert.deepEqual(all, [
-          {
-            integer_1: 1,
-            float_1: 2,
-            string_1: 'a thing',
-            boolean_1: 1,
-            tables_primary_key: 1
-          },
-          {
-            integer_1: 2,
-            float_1: 3.2,
-            string_1: 'another thing',
-            boolean_1: 0,
-            tables_primary_key: 2
-          },
-          {
-            integer_1: 3,
-            float_1: 4.32,
-            string_1: 'one more thing',
-            boolean_1: 0,
-            tables_primary_key: 3
-          },
-          {
-            integer_1: 4,
-            float_1: 54.32101,
-            string_1: 'last thing',
-            boolean_1: 1,
-            tables_primary_key: 4
-          }
-        ]);
+      // Check data
+      let all = await sqliteRun(db, 'all', `SELECT * FROM ${tableName}`);
+      assert.deepEqual(all, [
+        {
+          integer_1: 1,
+          float_1: 2,
+          string_1: 'a thing',
+          boolean_1: 1,
+          tables_primary_key: 1
+        },
+        {
+          integer_1: 2,
+          float_1: 3.2,
+          string_1: 'another thing',
+          boolean_1: 0,
+          tables_primary_key: 2
+        },
+        {
+          integer_1: 3,
+          float_1: 4.32,
+          string_1: 'one more thing',
+          boolean_1: 0,
+          tables_primary_key: 3
+        },
+        {
+          integer_1: 4,
+          float_1: 54.32101,
+          string_1: 'last thing',
+          boolean_1: 1,
+          tables_primary_key: 4
+        }
+      ]);
 
-        // Close connect
-        db.close();
-
-        // done
-        done();
-      }
-      catch (e) {
-        done(e);
-      }
+      // Close connect
+      db.close();
     }).timeout(5000);
 
-    it('should call finish hook', async done => {
+    it('should call finish hook', async () => {
       let tableName = 'tables_start_test_hook';
       let hookCalled = false;
 
-      try {
-        let t = new Tables({
-          input: fixtureWithHeaders,
-          silent: true,
-          db: `sqlite://${dbPath}`,
-          tableName,
-          hooks: {
-            finish: (...args) => {
-              hookCalled = args;
-            }
+      let t = new Tables({
+        input: fixtureWithHeaders,
+        silent: true,
+        db: `sqlite://${dbPath}`,
+        tableName,
+        hooks: {
+          finish: (...args) => {
+            hookCalled = args;
           }
-        });
+        }
+      });
 
-        await t.start();
-        assert.ok(hookCalled);
-        assert.strictEqual(typeof hookCalled[0], 'object');
-        assert.strictEqual(typeof hookCalled[1], 'object');
-        assert.strictEqual(typeof hookCalled[2], 'object');
-        done();
-      }
-      catch (e) {
-        done(e);
-      }
+      await t.start();
+      assert.ok(hookCalled);
+      assert.strictEqual(typeof hookCalled[0], 'object');
+      assert.strictEqual(typeof hookCalled[1], 'object');
+      assert.strictEqual(typeof hookCalled[2], 'object');
     }).timeout(5000);
   });
 });
