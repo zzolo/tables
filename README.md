@@ -263,9 +263,14 @@ The following are all options that correspond to command-line options; see that 
 | `overwrite`      | `--overwrite`       |                                                                                    |
 | `silent`         | `--silent`          |                                                                                    |
 
+## Tips
+
+* If you run into a `Parse Error` on a "CSV" input and your input doesn't actually use quote characters, it could be that you need to set the quote character to null or an empty string, i.e. `--csv-quote=""`.
+* If your dates are not getting parsed and you believe you have set the correct format strings, try turning off the data parsing strict mode, i.e. `--no-date-strict-mode`.
+  * In the future, the strict mode might get turned off by default.
 ## Debugging
 
-Use the `DEBUG` environment variable to get debug information such as `DEBUG=tables*`.
+Use the `DEBUG` environment variable to get debug information, for instance `DEBUG=tables*`.
 
 ## Tests
 

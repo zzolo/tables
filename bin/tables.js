@@ -91,6 +91,12 @@ command.option(
                                   guessing datetime columns and parsing data.  Defaults to MM/DD/YYYY HH:mm:ss a.
                                   See moment.js for options.`
 );
+command.option(
+  '--no-date-strict-mode',
+  `Turn off strict mode for date parsing.
+                                  On by default.
+                                  See moment.js for specifics.`
+);
 // command.option(
 //   '-p, --data [file]',
 //   'Path to data file for resuming streams.  Defaults to ~/.tables-data'
@@ -159,6 +165,8 @@ async function cli() {
           : undefined,
     dateFormat: command.dateFormat ? command.dateFormat : undefined,
     datetimeFormat: command.datetimeFormat ? command.datetimeFormat : undefined,
+    dateStrictMode: command.dateStrictMode === undefined ? true :
+      !!command.dateStrictMode,
     batch: command.batchSize ? parseInt(command.batchSize, 10) : undefined,
     guess: command.guessSize ? parseInt(command.guessSize, 10) : undefined,
     restart: !!command.restart,
