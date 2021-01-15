@@ -192,7 +192,8 @@ async function cli() {
               ? command.csvHeaders.split(',')
               : undefined,
       delimiter: command.csvDelimiter ? command.csvDelimiter : undefined,
-      quote: command.csvQuote ? command.csvQuote : undefined
+      quote: command.csvQuote === '' ? null : command.csvQuote ?
+        command.csvQuote : undefined
     };
   }
   if (options.transformer) {
