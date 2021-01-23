@@ -94,7 +94,7 @@ command.option(
 command.option(
   '--no-date-strict-mode',
   `Turn off strict mode for date parsing.
-                                  On by default.
+                                  On by default.  Warning, turning off may cause simple numbers, like "42" to parse as dates.
                                   See moment.js for specifics.`
 );
 // command.option(
